@@ -1,5 +1,10 @@
+//Importing the Express module
+const express = require('express');
 //Importing the FS module
 const fs = require('fs');
+//Calling the exported express function
+const app = express();
+
 //Read the test data
 const tours = JSON.parse(
   fs.readFileSync('./dev-data/data/test-data.json', 'utf-8')
