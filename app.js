@@ -5,30 +5,38 @@ const morgan = require('morgan');
 //Middleware
 app.use(morgan('dev'));
 app.use(express.json());
+
 //Calling the exported express function
 const tourController = require('./controllers/tourController');
 const userController = require('./controllers/userController');
-app
-  .route('/api/v1/tours')
+
+const tourRouter = express.Router();
+const userRouter = express.Router();
+
+tourRouter
+  .route('/')
   .get(tourController.getTours)
   .post(tourController.postTour);
 
-app
-  .route('/api/v1/tours/:id')
+tourRouter
+  .route('/:id')
   .get(tourController.getTour)
   .patch(tourController.patchTour)
   .delete(tourController.deleteTour);
 
-app
-  .route('/api/v1/users')
+userRouter
+  .route('/')
   .get(userController.getUsers)
   .post(userController.postUser);
 
-app
-  .route('/api/v1/users/:id')
+userRouter
+  .route('/:id')
   .get(userController.getUser)
   .patch(userController.patchUser)
   .delete(userController.deleteUser);
+
+app.use('/api/v1/tours', tourRouter);
+app.use('/api/v1/users', userRouter);
 const port = 3000;
 //Create the server
 app.listen(port, () => {
