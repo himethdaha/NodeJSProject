@@ -3,8 +3,20 @@ const express = require('express');
 //Importing the FS module
 const fs = require('fs');
 
+exports.checkId = (req, res, next, val) => {
+  console.log(`Id is ${val}`);
+  next();
+};
+exports.checkBody = (req, res, next) => {
+  if (!req.body.name || !req.body.price) {
+    return res.status(400).json({
+      status: 'Fail',
+      messsage: "Body doesn't contain name and price",
+    });
+  }
+  next();
+};
 //Read the test data
-
 const tours = JSON.parse(
   fs.readFileSync('./dev-data/data/test-data.json', 'utf-8')
 );
