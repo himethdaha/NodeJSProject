@@ -23,40 +23,7 @@ mongoose
   .then((conn) => {
     console.log('Connected to the db');
   });
-//Creating a schema
-const tourSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'A Name is required'],
-    unique: true,
-  },
-  price: {
-    type: Number,
-    required: [true, 'A Price is required'],
-  },
-  rating: {
-    type: Number,
-    default: 4.0,
-  },
-});
 
-//Creating a model
-const Tour = mongoose.model('Tour', tourSchema);
-
-//Creating a test document
-const newTour = new Tour({
-  name: 'The Test Hiker',
-  price: 500,
-  rating: 4.3,
-});
-
-//Save the new Document
-newTour
-  .save()
-  .then((doc) => {
-    console.log(doc);
-  })
-  .catch((err) => console.log(err));
 const port = process.env.PORT;
 //Create the server
 app.listen(port, () => {
