@@ -8,7 +8,23 @@ const Tour = require('../models/tourModel');
 //Callback functions for the Routes
 exports.getTours = async (req, res) => {
   try {
-    const tours = await Tour.find();
+    //BASIC FILTERING
+    //Create the filterObject
+    const filterObj = { ...req.query };
+    //How the filterObj look = {duration: '5', difficulty: 'easy'}
+
+    //Create an array with the query parameters that should be excluded when filtering
+    const fieldsToExclude = ['page', 'sort', 'fields', 'limit'];
+
+    //Remove the fieldsToExclude from the filerObj
+    fieldsToExclude.forEach((el) => delete filterObj[el]);
+
+    //The query which contains the filtered document with other options
+    const query = Tour.find(filterObj);
+
+    //Grab the document which matches all of the options in the query
+    const tours = await query;
+
     res.status(200).json({
       status: 'success',
       results: tours.length,
