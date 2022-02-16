@@ -71,7 +71,7 @@ tourSchema.pre('save', function (next) {
 });
 
 //Mongoose Query Middleware
-tourSchema.pre('^find', function (next) {
+tourSchema.pre(/^find/, function (next) {
   //Exclude the vip tours from all find operations
   this.find({ VIPTour: { $ne: true } });
   next();
