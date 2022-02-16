@@ -7,6 +7,8 @@ const tourSchema = new mongoose.Schema({
     type: String,
     required: [true, 'A Name is required'],
     unique: true,
+    maxLength: [40, `Tour Name Can't exceed 40 characters`],
+    minLength: [10, `Tour Name must contain at least 10 characters`],
   },
   slug: String,
   VIPTour: { type: Boolean, default: false },
@@ -24,6 +26,7 @@ const tourSchema = new mongoose.Schema({
   },
   ratingsAverage: {
     type: Number,
+    max: [5.0, `Rate between 1.0 and 5.0`],
   },
   ratingsQuantity: {
     type: Number,
@@ -46,6 +49,7 @@ const tourSchema = new mongoose.Schema({
   },
   images: [String],
   startDates: [Date],
+
   expeditionOrganizer: {
     type: String,
     required: [true, 'Name of organizer is required'],
