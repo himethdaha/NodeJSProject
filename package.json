@@ -18,10 +18,11 @@
   },
   "homepage": "https://github.com/himethdaha/NodeJSProject#readme",
   "dependencies": {
-    "express": "^4.17.2",
     "dotenv": "^7.0.0",
+    "express": "^4.17.2",
     "mongoose": "^5.13.14",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "slugify": "^1.6.5"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

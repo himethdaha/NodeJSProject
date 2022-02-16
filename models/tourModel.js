@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 //Creating a schema
 const tourSchema = new mongoose.Schema({
@@ -7,6 +8,8 @@ const tourSchema = new mongoose.Schema({
     required: [true, 'A Name is required'],
     unique: true,
   },
+  slug: String,
+  VIPTour: { type: Boolean, default: false },
   duration: {
     type: Number,
     required: [true, 'A duration is required'],
@@ -57,6 +60,21 @@ const tourSchema = new mongoose.Schema({
     default: Date.now(),
     select: false,
   },
+});
+
+//Mongoose Document Middleware
+//Pre middleware on save
+tourSchema.pre('save', function (next) {
+  //Create a slug
+  this.slug = slugify(this.name, { lower: true, locale: 'en', trim: true });
+  next();
+});
+
+//Mongoose Query Middleware
+tourSchema.pre('^find', function (next) {
+  //Exclude the vip tours from all find operations
+  this.find({ VIPTour: { $ne: true } });
+  next();
 });
 
 //Creating a model

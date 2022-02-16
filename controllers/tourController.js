@@ -146,8 +146,9 @@ exports.getOrganizerStats = async (req, res) => {
           numRatings: { $avg: '$ratingsQuantity' },
         },
       },
+
       {
-        $sort: { avgRatings: -1 },
+        $sort: { avgRatings: 1 },
       },
     ]);
     res.status(200).json({
