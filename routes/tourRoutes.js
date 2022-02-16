@@ -5,6 +5,7 @@ const Tour = require('../models/tourModel');
 
 const router = express.Router();
 
+//ALIAS ROUTES
 //Top 5 popular tours
 router
   .route('/top-5-popular')
@@ -33,6 +34,10 @@ router.route('/top-5-mystical').get(function (req, res) {
     }
   );
 });
+
+//STATS ROUTES
+router.route('/org-stats').get(tourController.getOrganizerStats);
+router.route('/month-stats/:year').get(tourController.getBusiestMonth);
 // router.param('id', tourController.checkId);
 router.route('/').get(tourController.getTours).post(tourController.postTour);
 

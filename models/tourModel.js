@@ -42,7 +42,7 @@ const tourSchema = new mongoose.Schema({
     required: [true, 'An image cover is required'],
   },
   images: [String],
-  startDates: [String],
+  startDates: [Date],
   expeditionOrganizer: {
     type: String,
     required: [true, 'Name of organizer is required'],
