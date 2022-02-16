@@ -70,7 +70,7 @@ exports.getTour = async (req, res) => {
   } catch (error) {
     res.status(400).json({
       status: 'Fail',
-      message: error,
+      message: error.message,
     });
   }
 };
@@ -89,9 +89,8 @@ exports.postTour = async (req, res) => {
   } catch (error) {
     res.status(400).json({
       status: 'Fail',
-      message: error,
+      message: error.message,
     });
-    console.log(error);
   }
 };
 exports.patchTour = async (req, res) => {
@@ -109,7 +108,7 @@ exports.patchTour = async (req, res) => {
   } catch (error) {
     res.status(400).json({
       status: 'Fail',
-      message: error,
+      message: error.message,
     });
   }
 };
@@ -125,7 +124,7 @@ exports.deleteTour = async (req, res) => {
 
     res.status(400).json({
       status: 'Fail',
-      message: error,
+      message: error.message,
     });
   }
 };

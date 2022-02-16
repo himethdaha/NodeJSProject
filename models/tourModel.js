@@ -48,7 +48,15 @@ const tourSchema = new mongoose.Schema({
     required: [true, 'An image cover is required'],
   },
   images: [String],
-  startDates: [Date],
+  startDates: {
+    type: [Date],
+    validate: {
+      validator: function (val) {
+        return val >= new Date();
+      },
+      message: `Start date can't be less than today`,
+    },
+  },
 
   expeditionOrganizer: {
     type: String,
