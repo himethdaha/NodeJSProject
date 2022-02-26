@@ -23,9 +23,21 @@ const tourSchema = new mongoose.Schema({
   difficulty: {
     type: String,
     required: [true, 'A difficulty level is required'],
+    enum: {
+      values: ['easy', 'intermediate', 'difficult', 'dangerous', 'unknown'],
+      message: `Difficulty level can only be 'easy', 'intermediate', 'difficult', 'dangerous', 'unknown'`,
+    },
+  },
+  horrorLevel: {
+    type: String,
+    enum: {
+      values: ['scary', 'mild scary', 'extremely scary', 'unknown'],
+      message: `Horror level can only be 'scary', 'mild scary', 'extremely scary', 'unknown'`,
+    },
   },
   ratingsAverage: {
     type: Number,
+    min: [1.0, 'Rate between 1.0 and 5.0'],
     max: [5.0, `Rate between 1.0 and 5.0`],
   },
   ratingsQuantity: {
