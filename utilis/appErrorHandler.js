@@ -1,4 +1,4 @@
-class AppErrorHandler extends Error {
+class AppErrorHandler {
   constructor(message, statusCode) {
     this.message = message;
     this.statusCode = statusCode;
