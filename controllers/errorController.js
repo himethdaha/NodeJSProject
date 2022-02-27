@@ -10,6 +10,15 @@ const handleCastError = (err) => {
   return new AppError(message, 400);
 };
 
+//Handle 'DUPLICATE KEY ERRORS'
+const handleDuplicateKeyError = (err) => {
+  //Message to be passed in to AppError
+  const message = `Field ${err.keyValue.name} is a duplicate`;
+
+  //Call the AppError class
+  return new AppError(message, 400);
+};
+
 //Global error handling middleware
 //All the errors through out the app will be sent here
 module.exports = (err, req, res, next) => {
@@ -37,7 +46,16 @@ module.exports = (err, req, res, next) => {
     //Handling 'CASTERRORS'
     if (error.name === 'CastError') {
       //Call the function handleCastError
+      //Saving the returned error from AppError in the handleCastError function into error. So that it'll be saved as an isOperationalError
       error = handleCastError(err);
+    }
+
+    //Handling 'DUPLICATE KEY ERRORS'
+    //Using the error code because, this error is caused by the MongoDb driver instead of Mongoose
+    if (error.code === 11000) {
+      //Call the function handleDuplicateKeyError
+      //Saving the returned error from AppError in the handleDuplicateKeyError function into error. So that it'll be saved as an isOperationalError
+      error = handleDuplicateKeyError(err);
     }
 
     //Check if the error is a operation error

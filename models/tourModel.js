@@ -64,7 +64,9 @@ const tourSchema = new mongoose.Schema({
     type: [Date],
     validate: {
       validator: function (val) {
-        return val >= new Date();
+        val.forEach((element) => {
+          return new Date(element) >= new Date();
+        });
       },
       message: `Start date can't be less than today`,
     },
