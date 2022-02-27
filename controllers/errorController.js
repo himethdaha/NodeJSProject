@@ -1,3 +1,15 @@
+const AppError = require('../utilis/appErrorHandler');
+
+//Functions to handle MONGOOSE ERRORS
+//Handle 'CASTERRORS'
+const handleCastError = (err) => {
+  //Message to be passed in to AppError
+  const message = `Invalid ${err.path}: ${err.value}`;
+
+  //Call the AppError class
+  return new AppError(message, 400);
+};
+
 //Global error handling middleware
 //All the errors through out the app will be sent here
 module.exports = (err, req, res, next) => {
@@ -18,14 +30,25 @@ module.exports = (err, req, res, next) => {
   }
   //Error details to be sent during PRODUCTION
   else if (process.env.NODE_ENV === 'production') {
+    let error = Object.create(err);
+
+    //Handling MONGOOSE ERRORS
+    //The focus of handling these errors is to mark them as `Operational Errors`, so that the users can see them as regular errors
+    //Handling 'CASTERRORS'
+    if (error.name === 'CastError') {
+      //Call the function handleCastError
+      error = handleCastError(err);
+    }
+
     //Check if the error is a operation error
-    if (err.isOperationalError) {
+    if (error.isOperationalError) {
       //Send a response to the user
-      res.status(err.statusCode).json({
-        status: err.status,
-        message: err.message,
+      res.status(error.statusCode).json({
+        status: error.status,
+        message: error.message,
       });
     }
+
     //If the error is not an operation error (programming error, 3rd party errors)
     else {
       //Log the unknown error so that I can view it later in Herokus Logs
