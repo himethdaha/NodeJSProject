@@ -19,6 +19,20 @@ const handleDuplicateKeyError = (err) => {
   return new AppError(message, 400);
 };
 
+//Handle 'VALIDATIONERRORS'
+const handleValidationError = (err) => {
+  const appErrorMessage = [];
+  //Loop over the error field names from the error object
+  const paths = Object.values(err.errors).map((el) => el.path);
+  //Loop over the error messages from the error oject
+  const messages = Object.values(err.errors).map((el) => el.message);
+
+  //Concat the error message with the respective field name and push it to a new array
+  for (let i = 0; i < paths.length; i++) {
+    appErrorMessage.push(`Field ${paths[i]}: ${messages[i]}`);
+  }
+  return new AppError(appErrorMessage.join('. '), 400);
+};
 //Global error handling middleware
 //All the errors through out the app will be sent here
 module.exports = (err, req, res, next) => {
@@ -56,6 +70,13 @@ module.exports = (err, req, res, next) => {
       //Call the function handleDuplicateKeyError
       //Saving the returned error from AppError in the handleDuplicateKeyError function into error. So that it'll be saved as an isOperationalError
       error = handleDuplicateKeyError(err);
+    }
+
+    //Handling 'VALIDATORERRORS'
+    if (error.name === 'ValidationError') {
+      //Call the function handleValidatorError
+      //Saving the returned error from AppError in the handleValidatorError function into error. So that it'll be saved as an isOperationalError
+      error = handleValidationError(err);
     }
 
     //Check if the error is a operation error
