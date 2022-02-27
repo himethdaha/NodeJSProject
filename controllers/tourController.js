@@ -6,6 +6,8 @@ const fs = require('fs');
 //Import the Tour model
 const Tour = require('../models/tourModel');
 const APIFeatures = require('../utilis/apiFeatures');
+const catchAsyncError = require('../utilis/catchAsyncError');
+const AppError = require('../utilis/appErrorHandler');
 
 //ROUTING MIDDLEWARES FOR ALIAS ROUTES
 exports.topFivePopular = async (req, res, next) => {
@@ -60,74 +62,49 @@ exports.getTours = async (req, res) => {
     });
   }
 };
-exports.getTour = async (req, res) => {
-  try {
-    const newTour = await Tour.findById(req.params.id);
-    return res.status(200).json({
-      status: 'Success',
-      tour: newTour,
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: 'Fail',
-      message: error.message,
-    });
-  }
-};
-exports.postTour = async (req, res) => {
+
+exports.getTour = catchAsyncError(async (req, res, next) => {
+  const newTour = await Tour.findById(req.params.id);
+
+  return res.status(200).json({
+    status: 'Success',
+    tour: newTour,
+  });
+});
+
+exports.postTour = catchAsyncError(async (req, res, next) => {
   //const newTour = new Tour({})
   //newTour.save()
-  try {
-    //Store the document
-    const newTour = await Tour.create(req.body);
-    res.status(201).json({
-      status: 'success',
-      data: {
-        tour: newTour,
-      },
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: 'Fail',
-      message: error.message,
-    });
-  }
-};
-exports.patchTour = async (req, res) => {
-  try {
-    const newTour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-    res.status(200).json({
-      status: 'Success',
-      data: {
-        tour: newTour,
-      },
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: 'Fail',
-      message: error.message,
-    });
-  }
-};
-exports.deleteTour = async (req, res) => {
-  try {
-    const newTour = await Tour.deleteOne({ _id: req.params.id });
-    res.status(204).json({
-      status: 'success',
-      data: null,
-    });
-  } catch (error) {
-    console.log(error);
 
-    res.status(400).json({
-      status: 'Fail',
-      message: error.message,
-    });
-  }
-};
+  //Store the document
+  const newTour = await Tour.create(req.body);
+  res.status(201).json({
+    status: 'success',
+    data: {
+      tour: newTour,
+    },
+  });
+});
+exports.patchTour = catchAsyncError(async (req, res, next) => {
+  const newTour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+  res.status(200).json({
+    status: 'Success',
+    data: {
+      tour: newTour,
+    },
+  });
+});
+
+exports.deleteTour = catchAsyncError(async (req, res, next) => {
+  const newTour = await Tour.deleteOne({ _id: req.params.id });
+  res.status(204).json({
+    status: 'success',
+    data: null,
+  });
+});
 
 //Using the aggregation piepeline to figure out the lead organizer of the highest and lowest rated tours
 exports.getOrganizerStats = async (req, res) => {
