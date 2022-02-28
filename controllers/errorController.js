@@ -92,8 +92,6 @@ module.exports = (err, req, res, next) => {
     else {
       //Log the unknown error so that I can view it later in Herokus Logs
       console.error(`UNKNOWN ERROR 😮`, err);
-      console.log(process.env.NODE_ENV === 'production');
-
       res.status(500).json({
         status: 'error',
         message:

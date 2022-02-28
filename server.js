@@ -1,6 +1,17 @@
 //THIS IS WHERE THE SETUP OF MY APPLICATION HAPPENS
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+
+//Catching UncaughtExceptions. Caused by Uncaught JS Exceptions bubble up to the 'Event Loop'.
+//using the process obejct as a named event emmitter and subscribing to it
+process.on('uncaughtException', (err) => {
+  console.log('UNCAUGHT EXCEPTION. Shutting Down...😭');
+  console.log(err.name, err.message);
+
+  //Close the application immediately. Restarting the application without cleaning up the allocated resources will make the application corrupt
+  process.exit(1);
+});
+
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
@@ -22,6 +33,9 @@ mongoose
   })
   .then((conn) => {
     console.log('Connected to the db');
+  })
+  .catch((err) => {
+    console.log('Database Conenction Error.', err.name, err.message);
   });
 
 const port = process.env.PORT;
@@ -33,10 +47,11 @@ const server = app.listen(port, () => {
 //Catching Unhandled Rejections. Rejected promises that aren't handled by a catch block
 //Using the process object as a named event emmitter and subscribing to it
 process.on('unhandledRejection', (err) => {
+  console.log('UNHANDLED REJECTION. Shutting Down...😭');
   console.log(err.name, err.message);
 
   //Handle pending and current requests first before closing the app
-  server.close((err) => {
+  server.close(() => {
     process.exit(1);
   });
 });
