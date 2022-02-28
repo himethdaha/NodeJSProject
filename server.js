@@ -26,6 +26,17 @@ mongoose
 
 const port = process.env.PORT;
 //Create the server
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`App Running on port 3000`);
+});
+
+//Catching Unhandled Rejections. Rejected promises that aren't handled by a catch block
+//Using the process object as a named event emmitter and subscribing to it
+process.on('unhandledRejection', (err) => {
+  console.log(err.name, err.message);
+
+  //Handle pending and current requests first before closing the app
+  server.close((err) => {
+    process.exit(1);
+  });
 });
