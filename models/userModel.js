@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -55,6 +56,20 @@ const userSchema = new mongoose.Schema({
       message: `Passwords confirmation doesn't match`,
     },
   },
+});
+
+//Document Middleware to encrypt a password
+userSchema.pre('save', async function (next) {
+  //If the password isn't modified immediately exit this middleware
+  if (!this.isModified('password')) return next();
+
+  //Hash the password with a salt length of 12
+  this.password = await bcrypt.hash(this.password, 12);
+
+  //Do not persist the passwordConfirmation field to the database after validating the password
+  this.passwordConfirmation = undefined;
+
+  next();
 });
 
 const User = mongoose.model('User', userSchema);

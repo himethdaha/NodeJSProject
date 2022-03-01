@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const catchAsyncError = require('../utilis/catchAsyncError');
 
@@ -13,9 +14,15 @@ exports.signUp = catchAsyncError(async (req, res) => {
     passwordConfirmation: req.body.passwordConfirmation,
   });
 
+  //Assigning a jwt to a newly registered user, making them logged in
+  const jwtToken = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY, {
+    expiresIn: process.env.JWT_EXP_TIME,
+  });
+
   //Send a response on success
   res.status(201).json({
     status: 'success',
+    jwtToken,
     data: {
       user: newUser,
     },
