@@ -8,6 +8,9 @@ const router = express.Router();
 //Route for signing up a new user
 router.post('/signup', authController.signUp);
 
+//Route for logging in a new user
+router.post('/login', authController.login);
+
 router.route('/').get(userController.getUsers).post(userController.postUser);
 
 router

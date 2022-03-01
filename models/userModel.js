@@ -44,6 +44,7 @@ const userSchema = new mongoose.Schema({
       },
       message: `Password must be at least 8 characters long and contain one 'a-z', 'A-Z', one number and symbol`,
     },
+    select: false,
   },
   passwordConfirmation: {
     type: String,
@@ -71,6 +72,14 @@ userSchema.pre('save', async function (next) {
 
   next();
 });
+
+//Instance method to compare user provided password and password from the database when logging in
+userSchema.methods.comparePasswords = async function (
+  userInputPass,
+  databasePass
+) {
+  return await bcrypt.compare(userInputPass, databasePass);
+};
 
 const User = mongoose.model('User', userSchema);
 
