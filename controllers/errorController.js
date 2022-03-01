@@ -33,6 +33,17 @@ const handleValidationError = (err) => {
   }
   return new AppError(appErrorMessage.join('. '), 400);
 };
+
+//Handle 'JSONWEBTOKENERROR'
+const handleJwtError = () => {
+  return new AppError('Invalid Jason Web Token', 401);
+};
+
+//Handle 'TOKENNEXPIREDERROR'
+const handleJwtExp = () => {
+  return new AppError('Jason Web Token Expired. Log in again', 401);
+};
+
 //Global error handling middleware
 //All the errors through out the app will be sent here
 module.exports = (err, req, res, next) => {
@@ -77,6 +88,21 @@ module.exports = (err, req, res, next) => {
       //Call the function handleValidatorError
       //Saving the returned error from AppError in the handleValidatorError function into error. So that it'll be saved as an isOperationalError
       error = handleValidationError(err);
+    }
+
+    //JWT ERROR HANDLING
+
+    //Handling 'JsonWebTokenErrors'
+    if (error.name === 'JsonWebTokenError') {
+      //Call the function handleValidatorError
+      //Saving the returned error from AppError in the handleJwtError function into error. So that it'll be saved as an isOperationalError
+      error = handleJwtError();
+    }
+
+    if (error.name === 'TokenExpiredError') {
+      //Call the function handleJwtExp
+      //Saving the returned error from AppError in the handleJwtExp function into error. So that it'll be saved as an isOperationalError
+      error = handleJwtExp();
     }
 
     //Check if the error is a operation error

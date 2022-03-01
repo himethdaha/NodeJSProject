@@ -57,6 +57,7 @@ const userSchema = new mongoose.Schema({
       message: `Passwords confirmation doesn't match`,
     },
   },
+  passwordChangedTime: Date,
 });
 
 //Document Middleware to encrypt a password
@@ -79,6 +80,20 @@ userSchema.methods.comparePasswords = async function (
   databasePass
 ) {
   return await bcrypt.compare(userInputPass, databasePass);
+};
+
+//Instance method to compare password changed time and jwt issued time
+userSchema.methods.isPasswordChanged = function (jwtIat) {
+  //Check if the passwordChangedTime is present in the user document
+  if (this.passwordChangedTime) {
+    //Change the password changed time from the Date format to a TimeStamp
+    const convertPassChangeTime = this.passwordChangedTime.getTime() / 1000;
+
+    //Return true if the passwordChangedTime is greater than JwtIat
+    return convertPassChangeTime > jwtIat;
+  }
+  //Return false if the user hasn't changed the password
+  return false;
 };
 
 const User = mongoose.model('User', userSchema);

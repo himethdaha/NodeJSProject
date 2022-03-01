@@ -1,6 +1,8 @@
 const express = require('express');
 
 const tourController = require('../controllers/tourController');
+const authController = require('../controllers/authController');
+
 const Tour = require('../models/tourModel');
 
 const router = express.Router();
@@ -36,8 +38,12 @@ router.route('/top-5-mystical').get(function (req, res) {
 });
 
 //STATS ROUTES
-router.route('/org-stats').get(tourController.getOrganizerStats);
-router.route('/month-stats/:year').get(tourController.getBusiestMonth);
+router
+  .route('/org-stats')
+  .get(authController.restrictRoute, tourController.getOrganizerStats);
+router
+  .route('/month-stats/:year')
+  .get(authController.restrictRoute, tourController.getBusiestMonth);
 // router.param('id', tourController.checkId);
 router.route('/').get(tourController.getTours).post(tourController.postTour);
 
