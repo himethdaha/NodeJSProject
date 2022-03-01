@@ -2,7 +2,7 @@ const User = require('../models/userModel');
 const catchAsyncError = require('../utilis/catchAsyncError');
 
 //Sign up function for the user
-exports.signUp = catchAsyncError(async (req, res, next) => {
+exports.signUp = catchAsyncError(async (req, res) => {
   //Create a user based on the information in the request body
   const newUser = await User.create({
     name: req.body.name,

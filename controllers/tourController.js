@@ -63,7 +63,7 @@ exports.getTours = async (req, res) => {
   }
 };
 
-exports.getTour = catchAsyncError(async (req, res, next) => {
+exports.getTour = catchAsyncError(async (req, res) => {
   const newTour = await Tour.findById(req.params.id);
 
   //If a tour is not found with the id
@@ -78,7 +78,7 @@ exports.getTour = catchAsyncError(async (req, res, next) => {
   });
 });
 
-exports.postTour = catchAsyncError(async (req, res, next) => {
+exports.postTour = catchAsyncError(async (req, res) => {
   //const newTour = new Tour({})
   //newTour.save()
 
@@ -91,7 +91,7 @@ exports.postTour = catchAsyncError(async (req, res, next) => {
     },
   });
 });
-exports.patchTour = catchAsyncError(async (req, res, next) => {
+exports.patchTour = catchAsyncError(async (req, res) => {
   const newTour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
@@ -109,7 +109,7 @@ exports.patchTour = catchAsyncError(async (req, res, next) => {
   });
 });
 
-exports.deleteTour = catchAsyncError(async (req, res, next) => {
+exports.deleteTour = catchAsyncError(async (req, res) => {
   const newTour = await Tour.deleteOne({ _id: req.params.id });
 
   //If a tour is not found with the id

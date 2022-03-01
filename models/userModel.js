@@ -39,20 +39,15 @@ const userSchema = new mongoose.Schema({
     required: [true, `Enter a password`],
     validate: {
       validator: function (val) {
-        return validator.isStrongPassword(val, {
-          minLength: 9,
-          minUpperCase: 1,
-          minNumbers: 2,
-          minSymbols: 2,
-          returnScore: true,
-        });
+        return validator.isStrongPassword(val);
       },
+      message: `Password must be at least 8 characters long and contain one 'a-z', 'A-Z', one number and symbol`,
     },
-    message: `Password must be at least 9 characters long and contain one 'a-z', 'A-Z', two numbers and symbols`,
   },
   passwordConfirmation: {
     type: String,
     required: [true, `Enter password confirmation`],
+    //Only works on save or create
     validate: {
       validator: function (val) {
         return val === this.password;
