@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 //using the process obejct as a named event emmitter and subscribing to it
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION. Shutting Down...😭');
-  console.log(err.name, err.message);
+  console.log(err);
 
   //Close the application immediately. Restarting the application without cleaning up the allocated resources will make the application corrupt
   process.exit(1);

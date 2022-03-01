@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
     validate: {
       validator: function (val) {
-        return validator.isAlpha(val, ['en-us'], { ignore: ' ' });
+        return validator.isAlpha(val, ['en-US'], { ignore: ' ' });
       },
       message: `Name can only contain letters`,
     },
@@ -30,18 +30,25 @@ const userSchema = new mongoose.Schema({
       message: `{VALUE} is not a valid email`,
     },
   },
-  isVIP: Boolean,
+  isVIP: {
+    type: Boolean,
+    default: false,
+  },
   password: {
     type: String,
     required: [true, `Enter a password`],
     validate: {
-      validator: validator.isStrongPassword({
-        minLength: 9,
-        minNumbers: 2,
-        minSymbols: 2,
-      }),
-      message: `Password must be at least 9 characters long with at least 2 numbers and symbols`,
+      validator: function (val) {
+        return validator.isStrongPassword(val, {
+          minLength: 9,
+          minUpperCase: 1,
+          minNumbers: 2,
+          minSymbols: 2,
+          returnScore: true,
+        });
+      },
     },
+    message: `Password must be at least 9 characters long and contain one 'a-z', 'A-Z', two numbers and symbols`,
   },
   passwordConfirmation: {
     type: String,
