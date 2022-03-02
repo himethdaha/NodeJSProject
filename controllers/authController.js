@@ -117,3 +117,18 @@ exports.restrictRoute = catchAsyncError(async (req, res, next) => {
   //Grant access to the protected route
   next();
 });
+
+//Middleware to restrict access to certain endpoints. Authorization requires
+//Wrap the middleware in another function to retain the roles as arguments
+exports.authorizeRoutes = function (...roles) {
+  //Return the middleware
+  return (req, res, next) => {
+    //Check if the roles arguments array contains the admin and expeditionOrganizer roles
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError(`You have no authorization to perform this action`, 403)
+      );
+    }
+    next();
+  };
+};

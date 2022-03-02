@@ -58,6 +58,10 @@ const userSchema = new mongoose.Schema({
     },
   },
   passwordChangedTime: Date,
+  role: {
+    type: String,
+    enum: ['user', 'admin', 'expeditionOrganizer', 'expeditionGuide'],
+  },
 });
 
 //Document Middleware to encrypt a password

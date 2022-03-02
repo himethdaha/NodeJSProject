@@ -51,6 +51,10 @@ router
   .route('/:id')
   .get(tourController.getTour)
   .patch(tourController.patchTour)
-  .delete(tourController.deleteTour);
+  .delete(
+    authController.restrictRoute,
+    authController.authorizeRoutes('admin', 'expeditionOrganizer'),
+    tourController.deleteTour
+  );
 
 module.exports = router;
