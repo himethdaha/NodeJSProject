@@ -81,6 +81,17 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
+//Document middleware to update passwordChangedTime when the password is modifiled
+userSchema.pre('save', function (next) {
+  //Return next middleware if the password isn't modified or is new
+  if (!this.isModified || this.isNew) {
+    return next();
+  }
+
+  this.passwordChangedTime = Date.now();
+  next();
+});
+
 //Instance method to compare user provided password and password from the database when logging in
 userSchema.methods.comparePasswords = async function (
   userInputPass,
