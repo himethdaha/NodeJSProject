@@ -140,7 +140,7 @@ exports.authorizeRoutes = function (...roles) {
 exports.resetPasswordPage = catchAsyncError(async (req, res, next) => {
   //STEP 1
   //Get the user based on the email
-  const user = await User.findOne(req.body.email);
+  const user = await User.findOne({ email: req.body.email });
 
   if (!user) {
     return next(new AppError(`Can't find a user with this email`, 404));

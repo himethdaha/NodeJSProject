@@ -113,7 +113,7 @@ userSchema.methods.forgotPasswordReset = function (next) {
 
   console.log({ token }, this.passwordResetToken);
   //Set the expiration time of the password reset token (10 mins)
-  this.passwordResetTokenExp = Date.now() + 10 * 60 * 1000;
+  this.passwordResetTokenExp = new Date().setMinutes(10);
 
   //Return the 32 bit hex string for the user to use
   return token;
