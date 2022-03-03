@@ -13,6 +13,7 @@ router.post('/login', authController.login);
 
 //PASSWORD RESET
 router.post('/forgotPassword', authController.resetPasswordPage);
+// router.post('/resetPassword', authController.resetPassword);
 
 router.route('/').get(userController.getUsers).post(userController.postUser);
 

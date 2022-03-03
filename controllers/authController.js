@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const catchAsyncError = require('../utilis/catchAsyncError');
 const AppError = require('../utilis/appErrorHandler');
+const setNodeMailer = require('../utilis/email');
 
 //Sign up function for the user
 exports.signUp = catchAsyncError(async (req, res) => {
@@ -151,4 +152,36 @@ exports.resetPasswordPage = catchAsyncError(async (req, res, next) => {
   const resetToken = user.forgotPasswordReset();
   //Set check validations to false before saving
   user.save({ validateBeforeSave: false });
+
+  //Use a try-catch to catch errors occurin during the email process to perform certain actions other than sending an error message
+  try {
+    //STEP 3
+    //Create the message to be sent via email
+    const message = `Click on the provided link to reset your password. If you didn't request to reset the password, ignore this message. ${
+      req.protocol
+    }://${req.get('host')}/api/v1/users/resetPassword/${resetToken}`;
+
+    //Create the mail options and send the email to the user
+    await setNodeMailer({
+      email: req.body.email,
+      subject: `Reset Password Token (Valid only for 10 mins)`,
+      message,
+    });
+
+    res.status(200).json({
+      status: 'success',
+      message: 'Reset Password email sent',
+    });
+  } catch (error) {
+    //Remove the passwordResetToken and passwordResetTokenExp from the database
+    user.passwordResetToken = undefined;
+    user.passwordResetTokenExp = undefined;
+
+    //Save the changed document
+    user.save({ validateBeforeSave: false });
+
+    return next(
+      new AppError(`An error occured while sending the email. Try again`, 500)
+    );
+  }
 });
