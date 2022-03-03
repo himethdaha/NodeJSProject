@@ -14,6 +14,7 @@ exports.signUp = catchAsyncError(async (req, res) => {
     isVIP: req.body.isVIP,
     password: req.body.password,
     passwordConfirmation: req.body.passwordConfirmation,
+    passwordChangedTime: req.body.passwordChangedTime,
   });
 
   //Assigning a jwt to a newly registered user, making them logged in
@@ -132,3 +133,22 @@ exports.authorizeRoutes = function (...roles) {
     next();
   };
 };
+
+//RESETTING PASSWORD
+
+//Middleware which will be used on the page, the user will enter their email to receive a token which will be used to reset the password
+exports.resetPasswordPage = catchAsyncError(async (req, res, next) => {
+  //STEP 1
+  //Get the user based on the email
+  const user = await User.findOne(req.body.email);
+
+  if (!user) {
+    return next(new AppError(`Can't find a user with this email`, 404));
+  }
+
+  //STEP 2
+  //Create the reset token and save the hashed version in the database
+  const resetToken = user.forgotPasswordReset();
+  //Set check validations to false before saving
+  user.save({ validateBeforeSave: false });
+});

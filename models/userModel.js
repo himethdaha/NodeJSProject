@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
@@ -62,6 +63,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     enum: ['user', 'admin', 'expeditionOrganizer', 'expeditionGuide'],
   },
+  passwordResetToken: String,
+  passwordResetTokenExp: Date,
 });
 
 //Document Middleware to encrypt a password
@@ -98,6 +101,22 @@ userSchema.methods.isPasswordChanged = function (jwtIat) {
   }
   //Return false if the user hasn't changed the password
   return false;
+};
+
+//Instance method to create the password reset token
+userSchema.methods.forgotPasswordReset = function (next) {
+  //Create a 32 bit hex string
+  const token = crypto.randomBytes(32).toString('hex');
+
+  //Hash the password reset token, which is to be saved in the database as a temp password for the user to use, to create a new password
+  this.passwordResetToken = crypto.Hash('sha256').update(token).digest('hex');
+
+  console.log({ token }, this.passwordResetToken);
+  //Set the expiration time of the password reset token (10 mins)
+  this.passwordResetTokenExp = Date.now() + 10 * 60 * 1000;
+
+  //Return the 32 bit hex string for the user to use
+  return token;
 };
 
 const User = mongoose.model('User', userSchema);
