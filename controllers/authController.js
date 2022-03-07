@@ -11,7 +11,23 @@ const signJwt = (user) => {
   const jwtToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
     expiresIn: process.env.JWT_EXP_TIME,
   });
+  return jwtToken;
 };
+
+//Cookie Options
+const cookieOptions = {
+  expires: new Date(Date.now() + 60 * 60 * 1000),
+  httpOnly: true,
+};
+//Function to send a cookie along with a response
+const sendCookie = (res, user, cookieOptions) => {
+  //Set secure option to true in production
+  if (process.env.NODE_ENV === 'production') {
+    cookieOptions.secure = true;
+  }
+  res.cookie('jwt', signJwt(user), cookieOptions);
+};
+
 //Sign up function for the user
 exports.signUp = catchAsyncError(async (req, res) => {
   //Create a user based on the information in the request body
@@ -26,7 +42,10 @@ exports.signUp = catchAsyncError(async (req, res) => {
   });
 
   //Assigning a jwt to a newly registered user, making them logged in
-  signJwt(newUser);
+  const jwtToken = signJwt(newUser);
+
+  //Send a cookie
+  sendCookie(res, newUser, cookieOptions);
 
   //Send a response on success
   res.status(201).json({
@@ -64,7 +83,10 @@ exports.login = catchAsyncError(async function (req, res, next) {
   }
 
   //Create the JWT
-  signJwt(user);
+  const jwtToken = signJwt(user);
+
+  //Send a cookie
+  sendCookie(res, user, cookieOptions);
 
   //Send a response on a successful login
   res.status(200).json({
