@@ -29,6 +29,13 @@ router.patch(
   userController.updateLoggedUser
 );
 
+//UPDATE LOGGED IN USER INFO
+router.delete(
+  '/deactivateUser',
+  authController.restrictRoute,
+  userController.deactivateUser
+);
+
 router.route('/').get(userController.getUsers).post(userController.postUser);
 
 router

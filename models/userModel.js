@@ -65,6 +65,11 @@ const userSchema = new mongoose.Schema({
   },
   passwordResetToken: String,
   passwordResetTokenExp: Date,
+  activeUser: {
+    type: String,
+    default: true,
+    select: false,
+  },
 });
 
 //Document Middleware to encrypt a password

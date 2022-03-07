@@ -9,12 +9,17 @@ const AppError = require('../utilis/appErrorHandler');
 const app = express();
 
 //Callback functions for the Routes
-exports.getUsers = (req, res) => {
-  res.status(500).json({
-    status: 'Fail',
-    message: 'Route not implemented yet!',
+exports.getUsers = catchAsyncError(async (req, res, next) => {
+  //Get all users
+  const users = await User.find();
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      users: users,
+    },
   });
-};
+});
 exports.getUser = (req, res) => {
   res.status(500).json({
     status: 'Fail',
@@ -72,6 +77,28 @@ exports.patchUser = (req, res) => {
     message: 'Route not implemented yet!',
   });
 };
+
+//To change the active state of the user. Won't completely delete the user.
+exports.deactivateUser = catchAsyncError(async (req, res, next) => {
+  //Get the user by the id and password
+  const user = await User.findById(req.user._id).select('+password');
+
+  //Only get the current password field
+  if (!req.body.currentPassword) {
+    return next(new AppError(`Only enter the current password`, 401));
+  }
+  //Check if the user entered password is correct
+  if (!(await user.comparePasswords(req.body.currentPassword, user.password))) {
+    return next(new AppError(`Invalid Password`, 401));
+  }
+  await User.findByIdAndUpdate(req.user._id, { activeUser: false });
+
+  res.status(204).json({
+    status: 'success',
+    data: null,
+  });
+});
+
 exports.deleteUser = (req, res) => {
   res.status(500).json({
     status: 'Fail',
