@@ -6,6 +6,12 @@ const catchAsyncError = require('../utilis/catchAsyncError');
 const AppError = require('../utilis/appErrorHandler');
 const setNodeMailer = require('../utilis/email');
 
+//Function to sign the jwt
+const signJwt = (user) => {
+  const jwtToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
+    expiresIn: process.env.JWT_EXP_TIME,
+  });
+};
 //Sign up function for the user
 exports.signUp = catchAsyncError(async (req, res) => {
   //Create a user based on the information in the request body
@@ -20,9 +26,7 @@ exports.signUp = catchAsyncError(async (req, res) => {
   });
 
   //Assigning a jwt to a newly registered user, making them logged in
-  const jwtToken = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY, {
-    expiresIn: process.env.JWT_EXP_TIME,
-  });
+  signJwt(newUser);
 
   //Send a response on success
   res.status(201).json({
@@ -60,9 +64,7 @@ exports.login = catchAsyncError(async function (req, res, next) {
   }
 
   //Create the JWT
-  const jwtToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
-    expiresIn: process.env.JWT_EXP_TIME,
-  });
+  signJwt(user);
 
   //Send a response on a successful login
   res.status(200).json({
@@ -219,9 +221,7 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
 
   //STEP 4
   //Log in the user and assin a jwt
-  const jwtToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
-    expiresIn: process.env.JWT_EXP_TIME,
-  });
+  signJwt(user);
 
   res.status(200).json({
     status: 'success',
@@ -246,9 +246,7 @@ exports.resetLoggedUserPassword = catchAsyncError(async (req, res, next) => {
   await user.save();
 
   //Sign a jwt
-  const jwtToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
-    expiresIn: process.env.JWT_EXP_TIME,
-  });
+  signJwt(user);
 
   res.status(200).json({
     status: 'success',
