@@ -7,11 +7,15 @@ const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utilis/appErrorHandler');
 
 const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
 
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 
 //Middleware
+//Set secure headers
+app.use(helmet());
+
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
