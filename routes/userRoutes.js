@@ -22,6 +22,13 @@ router.patch(
   authController.resetLoggedUserPassword
 );
 
+//UPDATE LOGGED IN USER INFO
+router.patch(
+  '/updateMyInfo',
+  authController.restrictRoute,
+  userController.updateLoggedUser
+);
+
 router.route('/').get(userController.getUsers).post(userController.postUser);
 
 router
