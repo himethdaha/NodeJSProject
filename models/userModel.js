@@ -115,14 +115,13 @@ userSchema.methods.isPasswordChanged = function (jwtIat) {
 };
 
 //Instance method to create the password reset token
-userSchema.methods.forgotPasswordReset = function (next) {
+userSchema.methods.forgotPasswordReset = function () {
   //Create a 32 bit hex string
   const token = crypto.randomBytes(32).toString('hex');
 
   //Hash the password reset token, which is to be saved in the database as a temp password for the user to use, to create a new password
   this.passwordResetToken = crypto.Hash('sha256').update(token).digest('hex');
 
-  console.log({ token }, this.passwordResetToken);
   //Set the expiration time of the password reset token (10 mins)
   this.passwordResetTokenExp = new Date().setMinutes(10);
 

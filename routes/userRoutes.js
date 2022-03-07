@@ -15,6 +15,13 @@ router.post('/login', authController.login);
 router.post('/forgotPassword', authController.resetPasswordPage);
 router.patch('/resetPassword/:token', authController.resetPassword);
 
+//PASSWORD RESET FOR LOGGED IN USERS
+router.patch(
+  '/changePassword',
+  authController.restrictRoute,
+  authController.resetLoggedUserPassword
+);
+
 router.route('/').get(userController.getUsers).post(userController.postUser);
 
 router

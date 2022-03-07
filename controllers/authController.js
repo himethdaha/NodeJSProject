@@ -228,3 +228,30 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
     message: jwtToken,
   });
 });
+
+//Middleware to reset logged in users password
+exports.resetLoggedUserPassword = catchAsyncError(async (req, res, next) => {
+  //Get the logged in user based on the email and password
+  const user = await User.findById(req.user._id).select('+password');
+
+  //Check if the current password entered is correct
+  if (!(await user.comparePasswords(req.body.currentPassword, user.password))) {
+    return next(new AppError(`Invalid Password`, 401));
+  }
+
+  //Update the password
+  user.password = req.body.password;
+  user.passwordConfirmation = req.body.passwordConfirmation;
+  // await user.validate();
+  await user.save();
+
+  //Sign a jwt
+  const jwtToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
+    expiresIn: process.env.JWT_EXP_TIME,
+  });
+
+  res.status(200).json({
+    status: 'success',
+    message: `Password reset successfully`,
+  });
+});
