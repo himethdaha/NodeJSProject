@@ -80,7 +80,7 @@ const tourSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Name of guide is required'],
   },
-  Dangers: [String],
+  dangers: [String],
   createdAt: {
     type: Date,
     default: Date.now(),
