@@ -6,15 +6,28 @@ const morgan = require('morgan');
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utilis/appErrorHandler');
 
+const rateLimit = require('express-rate-limit');
+
+const tourRouter = require('./routes/tourRoutes');
+const userRouter = require('./routes/userRoutes');
+
+//Middleware
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-app.use(express.json());
-//Middleware
+//Set 100 requests for 30 minitues as the threshold from a single IP address
+app.use(
+  '/api',
+  rateLimit({
+    windowMs: 30 * 60 * 1000,
+    max: 100,
+    standardHeaders: true,
+    message: `Too many requests. Try again in 30 minitues`,
+  })
+);
 
-const tourRouter = require('./routes/tourRoutes');
-const userRouter = require('./routes/userRoutes');
+app.use(express.json());
 
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
