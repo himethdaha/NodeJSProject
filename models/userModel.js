@@ -72,6 +72,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+/////MIDDLEWARES/////
 //Document Middleware to encrypt a password
 userSchema.pre('save', async function (next) {
   //If the password isn't modified immediately exit this middleware
@@ -97,6 +98,13 @@ userSchema.pre('save', function (next) {
   next();
 });
 
+//Query middleware to exclude all deactivated users from find methods
+userSchema.pre(/^find/, function (next) {
+  this.find({ activeUser: { $ne: false } });
+  next();
+});
+
+/////INSTANCE METHODS/////
 //Instance method to compare user provided password and password from the database when logging in
 userSchema.methods.comparePasswords = async function (
   userInputPass,
