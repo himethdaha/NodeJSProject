@@ -74,11 +74,11 @@ const tourSchema = new mongoose.Schema({
 
   expeditionOrganizer: {
     type: String,
-    required: [true, 'Name of organizer is required'],
+    // required: [true, 'Name of organizer is required'],
   },
   expeditionGuide: {
     type: String,
-    required: [true, 'Name of guide is required'],
+    // required: [true, 'Name of guide is required'],
   },
   dangers: [String],
   createdAt: {
@@ -99,6 +99,20 @@ const tourSchema = new mongoose.Schema({
     address: String,
     description: String,
   },
+
+  //Embedding a document
+  tourLocations: [
+    {
+      type: {
+        type: String,
+        default: 'Point',
+        enum: ['Point'],
+      },
+      coordinates: [Number],
+      description: String,
+      day: Date,
+    },
+  ],
 });
 
 //Mongoose Document Middleware

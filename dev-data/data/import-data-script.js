@@ -8,9 +8,7 @@ const Tour = require('../../models/tourModel');
 dotenv.config({ path: './config.env' });
 
 //Read the data from the file
-const data = JSON.parse(
-  fs.readFileSync('./dev-data/data/test-data.json', 'utf-8')
-);
+const data = JSON.parse(fs.readFileSync('./dev-data/data/tours.json', 'utf-8'));
 
 //Create the db string
 const DbString = process.env.DATABASE.replace(
