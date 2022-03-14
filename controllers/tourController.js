@@ -63,7 +63,7 @@ exports.getTours = async (req, res) => {
   }
 };
 
-exports.getTour = catchAsyncError(async (req, res) => {
+exports.getTour = catchAsyncError(async (req, res, next) => {
   const newTour = await Tour.findById(req.params.id);
 
   //If a tour is not found with the id

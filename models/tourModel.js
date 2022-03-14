@@ -86,6 +86,19 @@ const tourSchema = new mongoose.Schema({
     default: Date.now(),
     select: false,
   },
+  //Creating an object to use geospatial data with mongodb
+  tourStartLocation: {
+    //sub fields of the embedded object
+    type: {
+      type: String,
+      default: 'Point',
+      enum: ['Point'],
+    },
+    //Takes in the lat and lng
+    coordinates: [Number],
+    address: String,
+    description: String,
+  },
 });
 
 //Mongoose Document Middleware
