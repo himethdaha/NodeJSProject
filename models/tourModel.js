@@ -113,6 +113,14 @@ const tourSchema = new mongoose.Schema({
       day: Date,
     },
   ],
+
+  //Reference to guides in the User model
+  guides: {
+    //Type is of ObjectId
+    type: mongoose.Schema.Types.ObjectId,
+    //Refer to the Model
+    ref: 'User',
+  },
 });
 
 //Mongoose Document Middleware
@@ -127,6 +135,17 @@ tourSchema.pre('save', function (next) {
 tourSchema.pre(/^find/, function (next) {
   //Exclude the vip tours from all find operations
   this.find({ VIPTour: { $ne: true } });
+  next();
+});
+
+//Create a Pre hook middleware
+//On every find operator populate the tour/s with the guides information
+tourSchema.pre(/^find/, function (next) {
+  //Populate the query
+  this.populate({
+    path: 'guides',
+    select: 'role name email',
+  });
   next();
 });
 

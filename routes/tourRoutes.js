@@ -40,17 +40,29 @@ router.route('/top-5-mystical').get(function (req, res) {
 //STATS ROUTES
 router
   .route('/org-stats')
-  .get(authController.restrictRoute, tourController.getOrganizerStats);
+  .get(
+    authController.restrictRoute,
+    authController.authorizeRoutes('admin'),
+    tourController.getOrganizerStats
+  );
 router
   .route('/month-stats/:year')
-  .get(authController.restrictRoute, tourController.getBusiestMonth);
+  .get(
+    authController.restrictRoute,
+    authController.authorizeRoutes('admin'),
+    tourController.getBusiestMonth
+  );
 // router.param('id', tourController.checkId);
 router.route('/').get(tourController.getTours).post(tourController.postTour);
 
 router
   .route('/:id')
   .get(tourController.getTour)
-  .patch(tourController.patchTour)
+  .patch(
+    authController.restrictRoute,
+    authController.authorizeRoutes('admin', 'expeditionOrganizer'),
+    tourController.patchTour
+  )
   .delete(
     authController.restrictRoute,
     authController.authorizeRoutes('admin', 'expeditionOrganizer'),

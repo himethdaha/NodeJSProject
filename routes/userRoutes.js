@@ -40,8 +40,8 @@ router.route('/').get(userController.getUsers).post(userController.postUser);
 
 router
   .route('/:id')
-  .get(userController.getUser)
-  .patch(userController.patchUser)
-  .delete(userController.deleteUser);
+  .get(authController.authorizeRoutes('admin'), userController.getUser)
+  .patch(authController.authorizeRoutes('admin'), userController.patchUser)
+  .delete(authController.authorizeRoutes('admin'), userController.deleteUser);
 
 module.exports = router;
