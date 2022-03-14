@@ -3,74 +3,80 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, `Enter your name`],
-    maxLength: [20, `Name can't exceed 20 characters`],
-    trim: true,
-    validate: {
-      validator: function (val) {
-        return validator.isAlpha(val, ['en-US'], { ignore: ' ' });
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, `Enter your name`],
+      maxLength: [20, `Name can't exceed 20 characters`],
+      trim: true,
+      validate: {
+        validator: function (val) {
+          return validator.isAlpha(val, ['en-US'], { ignore: ' ' });
+        },
+        message: `Name can only contain letters`,
       },
-      message: `Name can only contain letters`,
     },
-  },
-  nickName: {
-    type: String,
-    maxLength: [10, `Nick name can't exceed 10 characters`],
-    trim: true,
-  },
-  email: {
-    type: String,
-    required: [true, `Enter your email`],
-    unique: true,
-    trim: true,
-    lowercase: true,
-    validate: {
-      validator: validator.isEmail,
-      message: `{VALUE} is not a valid email`,
+    nickName: {
+      type: String,
+      maxLength: [10, `Nick name can't exceed 10 characters`],
+      trim: true,
     },
-  },
-  isVIP: {
-    type: Boolean,
-    default: false,
-  },
-  password: {
-    type: String,
-    required: [true, `Enter a password`],
-    validate: {
-      validator: function (val) {
-        return validator.isStrongPassword(val);
+    email: {
+      type: String,
+      required: [true, `Enter your email`],
+      unique: true,
+      trim: true,
+      lowercase: true,
+      validate: {
+        validator: validator.isEmail,
+        message: `{VALUE} is not a valid email`,
       },
-      message: `Password must be at least 8 characters long and contain one 'a-z', 'A-Z', one number and symbol`,
     },
-    select: false,
-  },
-  passwordConfirmation: {
-    type: String,
-    required: [true, `Enter password confirmation`],
-    //Only works on save or create
-    validate: {
-      validator: function (val) {
-        return val === this.password;
+    isVIP: {
+      type: Boolean,
+      default: false,
+    },
+    password: {
+      type: String,
+      required: [true, `Enter a password`],
+      validate: {
+        validator: function (val) {
+          return validator.isStrongPassword(val);
+        },
+        message: `Password must be at least 8 characters long and contain one 'a-z', 'A-Z', one number and symbol`,
       },
-      message: `Passwords confirmation doesn't match`,
+      select: false,
+    },
+    passwordConfirmation: {
+      type: String,
+      required: [true, `Enter password confirmation`],
+      //Only works on save or create
+      validate: {
+        validator: function (val) {
+          return val === this.password;
+        },
+        message: `Passwords confirmation doesn't match`,
+      },
+    },
+    passwordChangedTime: Date,
+    role: {
+      type: String,
+      enum: ['user', 'admin', 'expeditionOrganizer', 'expeditionGuide'],
+    },
+    passwordResetToken: String,
+    passwordResetTokenExp: Date,
+    activeUser: {
+      type: String,
+      default: true,
+      select: false,
     },
   },
-  passwordChangedTime: Date,
-  role: {
-    type: String,
-    enum: ['user', 'admin', 'expeditionOrganizer', 'expeditionGuide'],
-  },
-  passwordResetToken: String,
-  passwordResetTokenExp: Date,
-  activeUser: {
-    type: String,
-    default: true,
-    select: false,
-  },
-});
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
+);
 
 /////MIDDLEWARES/////
 //Document Middleware to encrypt a password

@@ -74,17 +74,18 @@ const tourSchema = new mongoose.Schema({
 
   expeditionOrganizer: {
     type: String,
-    // required: [true, 'Name of organizer is required'],
+    required: [true, 'Name of organizer is required'],
   },
   expeditionGuide: {
     type: String,
-    // required: [true, 'Name of guide is required'],
+    required: [true, 'Name of guide is required'],
   },
   dangers: [String],
   createdAt: {
     type: Date,
     default: Date.now(),
     select: false,
+    immutable: true,
   },
   //Creating an object to use geospatial data with mongodb
   tourStartLocation: {
