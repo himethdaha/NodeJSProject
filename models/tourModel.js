@@ -123,11 +123,6 @@ const tourSchema = new mongoose.Schema(
       //Refer to the Model
       ref: 'User',
     },
-    //Reference to the specific reviews
-    reviews: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Review',
-    },
   },
   {
     toJSON: { virtuals: true },
@@ -137,7 +132,14 @@ const tourSchema = new mongoose.Schema(
 );
 
 //Virtual populate for reviews
-// tourSchema.virtual
+tourSchema.virtual('reviews', {
+  //Model to be reffered
+  ref: 'Review',
+  //Where the id of the current models document is stored. Used to connect the child document with the parent document
+  localField: '_id',
+  //Field in the child document, which points to the parent document
+  foreignField: 'tour',
+});
 
 //Mongoose Document Middleware
 //Pre middleware on save

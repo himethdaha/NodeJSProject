@@ -64,7 +64,8 @@ exports.getTours = async (req, res) => {
 };
 
 exports.getTour = catchAsyncError(async (req, res, next) => {
-  const newTour = await Tour.findById(req.params.id);
+  //Use populate on the virtual poulate
+  const newTour = await Tour.findById(req.params.id).populate('reviews');
 
   //If a tour is not found with the id
   //Null means falsy in JS
