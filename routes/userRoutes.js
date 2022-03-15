@@ -29,19 +29,26 @@ router.patch(
   userController.updateLoggedUser
 );
 
-//UPDATE LOGGED IN USER INFO
+//DEACTIVATE USER
 router.delete(
   '/deactivateUser',
   authController.restrictRoute,
   userController.deactivateUser
 );
 
-router.route('/').get(userController.getUsers).post(userController.postUser);
+//DELETE USER
+router.delete(
+  '/deleteUser',
+  authController.restrictRoute,
+  authController.authorizeRoutes('admin'),
+  userController.deleteUser
+);
+
+router.route('/').get(userController.getUsers);
 
 router
   .route('/:id')
   .get(authController.authorizeRoutes('admin'), userController.getUser)
-  .patch(authController.authorizeRoutes('admin'), userController.patchUser)
   .delete(authController.authorizeRoutes('admin'), userController.deleteUser);
 
 module.exports = router;

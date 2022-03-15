@@ -58,3 +58,5 @@ exports.checkOwner = catchAsyncError(async (req, res, next) => {
 });
 //Delete a review
 exports.deleteReview = globalController.deleteDoc(Review);
+//Patch a review
+exports.patchReview = globalController.updateDoc(Review);

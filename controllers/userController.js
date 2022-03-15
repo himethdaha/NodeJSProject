@@ -5,6 +5,8 @@ const fs = require('fs');
 const User = require('../models/userModel');
 const catchAsyncError = require('../utilis/catchAsyncError');
 const AppError = require('../utilis/appErrorHandler');
+const globalController = require('./globalController');
+
 //Calling the exported express function
 const app = express();
 
@@ -27,12 +29,7 @@ exports.getUser = (req, res) => {
     message: 'Route not implemented yet!',
   });
 };
-exports.postUser = (req, res) => {
-  res.status(500).json({
-    status: 'Fail',
-    message: 'Route not implemented yet!',
-  });
-};
+
 //To update the fields email,name, nickName and isVIP
 exports.updateLoggedUser = catchAsyncError(async (req, res, next) => {
   //First check if the user is trying to update the password in this route
@@ -72,13 +69,6 @@ exports.updateLoggedUser = catchAsyncError(async (req, res, next) => {
   });
 });
 
-exports.patchUser = (req, res) => {
-  res.status(500).json({
-    status: 'Fail',
-    message: 'Route not implemented yet!',
-  });
-};
-
 //To change the active state of the user. Won't completely delete the user.
 exports.deactivateUser = catchAsyncError(async (req, res, next) => {
   //Get the user by the id and password
@@ -100,9 +90,5 @@ exports.deactivateUser = catchAsyncError(async (req, res, next) => {
   });
 });
 
-exports.deleteUser = (req, res) => {
-  res.status(500).json({
-    status: 'Fail',
-    message: 'Route not implemented yet!',
-  });
-};
+//To delete the user. Only available for the admin
+exports.deleteUser = globalController.deleteDoc(User);

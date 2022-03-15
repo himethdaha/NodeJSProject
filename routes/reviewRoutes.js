@@ -22,5 +22,11 @@ router
     reviewController.checkOwner,
     authController.authorizeRoutes('user', 'admin'),
     reviewController.deleteReview
+  )
+  .patch(
+    authController.restrictRoute,
+    reviewController.checkOwner,
+    authController.authorizeRoutes('user'),
+    reviewController.patchReview
   );
 module.exports = router;

@@ -8,6 +8,7 @@ const Tour = require('../models/tourModel');
 const APIFeatures = require('../utilis/apiFeatures');
 const catchAsyncError = require('../utilis/catchAsyncError');
 const AppError = require('../utilis/appErrorHandler');
+const globalController = require('./globalController');
 
 //ROUTING MIDDLEWARES FOR ALIAS ROUTES
 exports.topFivePopular = async (req, res, next) => {
@@ -92,36 +93,9 @@ exports.postTour = catchAsyncError(async (req, res) => {
     },
   });
 });
-exports.patchTour = catchAsyncError(async (req, res) => {
-  const newTour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
+exports.patchTour = globalController.updateDoc(Tour);
 
-  //If a tour is not found with the id
-  if (!newTour) {
-    return next(new AppError(`Could not find a tour with that ID`, 404));
-  }
-  res.status(200).json({
-    status: 'Success',
-    data: {
-      tour: newTour,
-    },
-  });
-});
-
-exports.deleteTour = catchAsyncError(async (req, res) => {
-  const newTour = await Tour.deleteOne({ _id: req.params.id });
-
-  //If a tour is not found with the id
-  if (!newTour) {
-    return next(new AppError(`Could not find a tour with that ID`, 404));
-  }
-  res.status(204).json({
-    status: 'success',
-    data: null,
-  });
-});
+exports.deleteTour = globalController.deleteDoc(Tour);
 
 //Using the aggregation piepeline to figure out the lead organizer of the highest and lowest rated tours
 exports.getOrganizerStats = async (req, res) => {
