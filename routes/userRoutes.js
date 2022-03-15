@@ -48,7 +48,11 @@ router.route('/').get(userController.getUsers);
 
 router
   .route('/:id')
-  .get(authController.authorizeRoutes('admin'), userController.getUser)
+  .get(
+    authController.restrictRoute,
+    authController.authorizeRoutes('admin'),
+    userController.getUser
+  )
   .delete(authController.authorizeRoutes('admin'), userController.deleteUser);
 
 module.exports = router;

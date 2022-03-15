@@ -42,3 +42,47 @@ exports.updateDoc = (Model) =>
       },
     });
   });
+
+//Global Get Document handler
+exports.getDoc = (Model, populateOptions) =>
+  catchAsyncError(async (req, res, next) => {
+    //Create query field
+    let query = await Model.findById(req.params.id);
+    //If populateOptions isn't null. populate the query
+    if (populateOptions) {
+      query = query.populate(populateOptions);
+    }
+    const doc = await query;
+
+    //If a tour is not found with the id
+    //Null means falsy in JS
+    if (!doc) {
+      return next(new AppError(`Could not find a document with that ID`, 404));
+    }
+
+    return res.status(200).json({
+      status: 'Success',
+      doc: doc,
+    });
+  });
+
+//Global Get Documents
+exports.getDocs = (Model, id) =>
+  catchAsyncError(async (req, res, next) => {
+    //Create an instance of the APIFeatures class
+    const features = new APIFeatures(Model, req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+    //Grab the document which matches all of the options in the query
+    const docs = await features.query;
+
+    res.status(200).json({
+      status: 'success',
+      results: docs.length,
+      data: {
+        docs: docs,
+      },
+    });
+  });

@@ -9,6 +9,7 @@ const APIFeatures = require('../utilis/apiFeatures');
 const catchAsyncError = require('../utilis/catchAsyncError');
 const AppError = require('../utilis/appErrorHandler');
 const globalController = require('./globalController');
+const { populate } = require('../models/tourModel');
 
 //ROUTING MIDDLEWARES FOR ALIAS ROUTES
 exports.topFivePopular = async (req, res, next) => {
@@ -38,46 +39,10 @@ exports.topFiveDangerous = async (req, res, next) => {
 };
 
 //Callback functions for the Routes
-exports.getTours = async (req, res) => {
-  try {
-    //Create an instance of the APIFeatures class
-    const features = new APIFeatures(Tour, req.query)
-      .filter()
-      .sort()
-      .limitFields()
-      .paginate();
-    //Grab the document which matches all of the options in the query
-    const tours = await features.query;
+exports.getTours = globalController.getDocs(Tour);
 
-    res.status(200).json({
-      status: 'success',
-      results: tours.length,
-      data: {
-        tours: tours,
-      },
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: 'Fail',
-      message: error.message,
-    });
-  }
-};
-
-exports.getTour = catchAsyncError(async (req, res, next) => {
-  //Use populate on the virtual poulate
-  const newTour = await Tour.findById(req.params.id).populate('reviews');
-
-  //If a tour is not found with the id
-  //Null means falsy in JS
-  if (!newTour) {
-    return next(new AppError(`Could not find a tour with that ID`, 404));
-  }
-
-  return res.status(200).json({
-    status: 'Success',
-    tour: newTour,
-  });
+exports.getTour = globalController.getDoc(Tour, {
+  path: 'reviews',
 });
 
 exports.postTour = catchAsyncError(async (req, res) => {

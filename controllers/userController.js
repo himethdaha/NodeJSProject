@@ -10,26 +10,11 @@ const globalController = require('./globalController');
 //Calling the exported express function
 const app = express();
 
-//Callback functions for the Routes
-exports.getUsers = catchAsyncError(async (req, res, next) => {
-  //Get all users
-  const users = await User.find();
+//Callback functions for the Users
+exports.getUsers = globalController.getDocs(User);
 
-  res.status(200).json({
-    status: 'success',
-    totalUsers: users.length,
-    data: {
-      users: users,
-    },
-  });
-});
-exports.getUser = (req, res) => {
-  res.status(500).json({
-    status: 'Fail',
-    message: 'Route not implemented yet!',
-  });
-};
-
+//Get a user
+exports.getUser = globalController.getDoc(User);
 //To update the fields email,name, nickName and isVIP
 exports.updateLoggedUser = catchAsyncError(async (req, res, next) => {
   //First check if the user is trying to update the password in this route
