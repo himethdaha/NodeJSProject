@@ -5,8 +5,14 @@ const Review = require('../models/reviewModel');
 
 //Get all reviews
 exports.getAllReviews = catchAsyncError(async (req, res, next) => {
-  const reviews = await Review.find();
-
+  let reviews;
+  //If a tourId is present in the url
+  let tourId = req.params.tourId;
+  if (tourId) {
+    reviews = await Review.find({ tour: tourId });
+  } else {
+    reviews = await Review.find();
+  }
   res.status(200).json({
     status: 'successful',
     reults: reviews.length,
@@ -18,11 +24,16 @@ exports.getAllReviews = catchAsyncError(async (req, res, next) => {
 
 //Create a review
 exports.postReview = catchAsyncError(async (req, res, next) => {
-  //Get the user id from the request.user
-  if (!req.body.user) {
-    req.body.user = req.user._id;
+  //Get the tour id frm the tourId param
+  if (!req.body.tour) {
+    req.body.tour = req.params.tourId;
   }
-  const review = await Review.create(req.body);
+  const review = await Review.create({
+    review: req.body.review,
+    rating: req.body.rating,
+    tour: req.body.tour,
+    user: req.user._id,
+  });
 
   res.status(200).json({
     status: 'successful',

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
-
 //Creating a schema
 const tourSchema = new mongoose.Schema(
   {

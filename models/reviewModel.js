@@ -37,7 +37,7 @@ const reviewSchema = new mongoose.Schema(
 );
 
 //Query Middleware
-//Populate the review with the tour and user
+//Populate the review with the user
 reviewSchema.pre(/^find/, function (next) {
   //populate the user
   this.populate({

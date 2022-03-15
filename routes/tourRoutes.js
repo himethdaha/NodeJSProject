@@ -2,6 +2,7 @@ const express = require('express');
 
 const tourController = require('../controllers/tourController');
 const authController = require('../controllers/authController');
+const reviewRoute = require('../routes/reviewRoutes');
 
 const Tour = require('../models/tourModel');
 
@@ -68,5 +69,8 @@ router
     authController.authorizeRoutes('admin', 'expeditionOrganizer'),
     tourController.deleteTour
   );
+
+//When a user hits this url take them to the review Router
+router.use('/:tourId/reviews', reviewRoute);
 
 module.exports = router;
