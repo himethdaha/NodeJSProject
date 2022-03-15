@@ -47,6 +47,10 @@ router.delete(
 router.route('/').get(userController.getUsers);
 
 router
+  .route('/myProfile')
+  .get(authController.restrictRoute, userController.getUserProfile);
+
+router
   .route('/:id')
   .get(
     authController.restrictRoute,

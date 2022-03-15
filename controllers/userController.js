@@ -75,5 +75,24 @@ exports.deactivateUser = catchAsyncError(async (req, res, next) => {
   });
 });
 
+//To get user profile info
+exports.getUserProfile = catchAsyncError(async (req, res, next) => {
+  //Find the user based on the user id
+  const user = await User.findById(req.user._id);
+  console.log(req.user._id);
+  if (!user) {
+    return next(new AppError(`No user found`, 404));
+  }
+
+  res.status(200).json({
+    status: 'successful',
+    data: {
+      name: user.name,
+      nickName: user.nickName,
+      email: user.email,
+      isVIP: user.isVIP,
+    },
+  });
+});
 //To delete the user. Only available for the admin
 exports.deleteUser = globalController.deleteDoc(User);
