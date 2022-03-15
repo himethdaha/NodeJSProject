@@ -15,4 +15,12 @@ router
     reviewController.postReview
   );
 
+router
+  .route('/:id')
+  .delete(
+    authController.restrictRoute,
+    reviewController.checkOwner,
+    authController.authorizeRoutes('user', 'admin'),
+    reviewController.deleteReview
+  );
 module.exports = router;
