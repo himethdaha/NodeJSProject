@@ -133,6 +133,11 @@ const tourSchema = new mongoose.Schema(
   }
 );
 
+//Indexes
+//tourStartLocation is the center point used when searching for tours within a certain distance
+//2dSphere because we're using real points in a sphere like shape
+tourSchema.index({ tourStartLocation: '2dsphere' });
+
 //Virtual populate for reviews
 tourSchema.virtual('reviews', {
   //Model to be reffered

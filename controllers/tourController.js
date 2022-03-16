@@ -62,6 +62,41 @@ exports.patchTour = globalController.updateDoc(Tour);
 
 exports.deleteTour = globalController.deleteDoc(Tour);
 
+//GeoSpatial Handlers
+//Handler to find all tours within a certain distance from a center point
+exports.toursNearMe = catchAsyncError(async (req, res, next) => {
+  //Get all the variables from the parameter
+  const { distance, latlng, unit } = req.params;
+  //Split the lat and lng into own variables
+  const [lat, lng] = latlng.split(',');
+  //Make sure the user enters their center position
+  if (!lat || !lng) {
+    return next(new AppError(`Enter the latitude and longitude values`, 400));
+  }
+
+  //To calculate the radius, take the unit into consideration
+  //Return a radian value because that's what the $geoWithin query uses
+  const radius = unit === 'km' ? distance / 6378 : distance / 3963;
+  //Find the tours
+  //Use $geoWithin GeoSpatial query as options in find
+  //tourStartLocation is what holds where the tours are. From the center point that is what we'll be searching for
+  const tours = await Tour.find({
+    tourStartLocation: { $geoWithin: { $centerSphere: [[lng, lat], radius] } },
+  });
+
+  res.status(200).json({
+    status: 'successful',
+    noOfTours: tours.length,
+    data: {
+      tours: tours,
+    },
+  });
+});
+
+//Handler to find all tours within a specified max and min distances
+// exports.findTours = catchAsync(async (req, res, next) => {
+
+// });
 //Using the aggregation piepeline to figure out the lead organizer of the highest and lowest rated tours
 exports.getOrganizerStats = async (req, res) => {
   try {
