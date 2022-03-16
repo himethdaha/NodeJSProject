@@ -5,7 +5,7 @@ const AppError = require('../utilis/appErrorHandler');
 //Global Delete Handler
 exports.deleteDoc = (Model) =>
   catchAsyncError(async (req, res, next) => {
-    const doc = await Model.deleteOne({ _id: req.params.id });
+    const doc = await Model.findByIdAndDelete(req.params.id);
 
     //If a document is not found with the id
     if (!doc) {

@@ -71,27 +71,46 @@ reviewSchema.statics.calcRatings = async function (tourId) {
       },
     },
   ]);
+  console.log(aggrPromise);
   //Above aggregate returns an array with an object.
   //Update the tour with the object returned
 
   //If there are no ratings, leave the fields at 0
-  if (totRatings < 0) {
+  if (aggrPromise.length > 0) {
+    await Tour.findByIdAndUpdate(tourId, {
+      ratingsAverage: aggrPromise[0].avgRating,
+      ratingsQuantity: aggrPromise[0].totRatings,
+    });
+  } else {
     await Tour.findByIdAndUpdate(tourId, {
       ratingsAverage: 0,
       ratingsQuantity: 0,
     });
   }
-  await Tour.findByIdAndUpdate(tourId, {
-    ratingsAverage: aggrPromise[0].avgRating,
-    ratingsQuantity: aggrPromise[0].totRatings,
-  });
 };
 
 //Post middleware to get the ratings average and quantity
-reviewSchema.post('save', async function () {
+reviewSchema.post('save', function () {
   //this refferes to the current review document
-  await this.constructor.calcRatings(this.tour);
+  this.constructor.calcRatings(this.tour);
 });
+
+//Calculating ratings after an update or a delete
+//Use query middleware to get the current query object because we're using findOneAnd
+reviewSchema.pre(/^findOneAnd/, async function (next) {
+  //Get the current review document from the query and save it in the query object
+  //There is no way to straightforward way to retrieve the current document when using query middleware
+  //findOne gets the first document that matches
+  this.review = await this.findOne();
+  next();
+});
+
+//Once the document is updated or deleted
+reviewSchema.post(/^findOneAnd/, async function () {
+  //Call the calcRatings static method on the retrieved review document
+  await this.review.constructor.calcRatings(this.review.tour);
+});
+
 const Review = mongoose.model('Review', reviewSchema);
 
 module.exports = Review;
