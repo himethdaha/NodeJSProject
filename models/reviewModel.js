@@ -37,6 +37,9 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
+//Indexes
+//Creating unique compund indexes so that a user can't have multiple reviews on a single tour
+reviewSchema.index({ user: 1, tour: 1 }, { unique: true });
 //Query Middleware
 //Populate the review with the user
 reviewSchema.pre(/^find/, function (next) {
