@@ -15,6 +15,7 @@ exports.getUsers = globalController.getDocs(User);
 
 //Get a user
 exports.getUser = globalController.getDoc(User);
+
 //To update the fields email,name, nickName and isVIP
 exports.updateLoggedUser = catchAsyncError(async (req, res, next) => {
   //First check if the user is trying to update the password in this route

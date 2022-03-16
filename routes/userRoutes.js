@@ -44,11 +44,13 @@ router.delete(
   userController.deleteUser
 );
 
-router.route('/').get(userController.getUsers);
-
 router
-  .route('/myProfile')
-  .get(authController.restrictRoute, userController.getUserProfile);
+  .route('/')
+  .get(
+    authController.restrictRoute,
+    authController.authorizeRoutes('admin'),
+    userController.getUsers
+  );
 
 router
   .route('/:id')
@@ -58,5 +60,9 @@ router
     userController.getUser
   )
   .delete(authController.authorizeRoutes('admin'), userController.deleteUser);
+
+router
+  .route('/myProfile')
+  .get(authController.restrictRoute, userController.getUserProfile);
 
 module.exports = router;

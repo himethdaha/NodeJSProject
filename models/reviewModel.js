@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Tour = require('./tourModel');
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -45,6 +46,51 @@ reviewSchema.pre(/^find/, function (next) {
     select: 'name nickName',
   });
   next();
+});
+
+//Calculating ratingsquantity and average in tours
+//Storing a summary of a related dataset on the main dataset
+//Main reason for this method to be static is becuase we're using aggregation here, which is always called on the Model
+reviewSchema.statics.calcRatings = async function (tourId) {
+  //Save the aggregation promise
+  const aggrPromise = await this.aggregate([
+    {
+      //Get the tour matching the review
+      $match: {
+        tour: tourId,
+      },
+    },
+    {
+      $group: {
+        _id: '$tour',
+        //Number of ratings
+        //Add one for each matching tour found with the review
+        totRatings: { $sum: 1 },
+        //Get the average rating by selecting the rating field in the Review Model
+        avgRating: { $avg: '$rating' },
+      },
+    },
+  ]);
+  //Above aggregate returns an array with an object.
+  //Update the tour with the object returned
+
+  //If there are no ratings, leave the fields at 0
+  if (totRatings < 0) {
+    await Tour.findByIdAndUpdate(tourId, {
+      ratingsAverage: 0,
+      ratingsQuantity: 0,
+    });
+  }
+  await Tour.findByIdAndUpdate(tourId, {
+    ratingsAverage: aggrPromise[0].avgRating,
+    ratingsQuantity: aggrPromise[0].totRatings,
+  });
+};
+
+//Post middleware to get the ratings average and quantity
+reviewSchema.post('save', async function () {
+  //this refferes to the current review document
+  await this.constructor.calcRatings(this.tour);
 });
 const Review = mongoose.model('Review', reviewSchema);
 

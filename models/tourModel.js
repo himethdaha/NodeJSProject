@@ -116,12 +116,14 @@ const tourSchema = new mongoose.Schema(
     ],
 
     //Reference to guides in the User model
-    guides: {
-      //Type is of ObjectId
-      type: mongoose.Schema.Types.ObjectId,
-      //Refer to the Model
-      ref: 'User',
-    },
+    guides: [
+      {
+        //Type is of ObjectId
+        type: mongoose.Schema.Types.ObjectId,
+        //Refer to the Model
+        ref: 'User',
+      },
+    ],
   },
   {
     toJSON: { virtuals: true },

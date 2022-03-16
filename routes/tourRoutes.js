@@ -54,19 +54,26 @@ router
     tourController.getBusiestMonth
   );
 // router.param('id', tourController.checkId);
-router.route('/').get(tourController.getTours).post(tourController.postTour);
+router
+  .route('/')
+  .get(tourController.getTours)
+  .post(
+    authController.restrictRoute,
+    authController.authorizeRoutes('admin'),
+    tourController.postTour
+  );
 
 router
   .route('/:id')
   .get(tourController.getTour)
   .patch(
     authController.restrictRoute,
-    authController.authorizeRoutes('admin', 'expeditionOrganizer'),
+    authController.authorizeRoutes('admin'),
     tourController.patchTour
   )
   .delete(
     authController.restrictRoute,
-    authController.authorizeRoutes('admin', 'expeditionOrganizer'),
+    authController.authorizeRoutes('admin'),
     tourController.deleteTour
   );
 
