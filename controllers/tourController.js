@@ -131,6 +131,49 @@ exports.findTours = catchAsyncError(async (req, res, next) => {
     },
   });
 });
+
+//Get tour distances aggregation
+exports.getTourDistances = catchAsyncError(async (req, res, next) => {
+  //Get the variables from the parameter
+  const { latlng, unit } = req.params;
+  //Get the lat,lng
+  const [lat, lng] = latlng.split(',');
+  //If the user hasn't entered the coordinates for the starting point
+  if (!lat || !lng) {
+    return next(new AppError(`Enter the latitude and longitude values`, 400));
+  }
+
+  //Convert the distance to the unit the user wants
+  // const convertedDistance = unit === 'mi' ? distance * 6378 : distance * 3963;
+  //The aggregation pipleline
+  const distances = await Tour.aggregate([
+    {
+      $geoNear: {
+        //Starting location
+        near: { type: 'Point', coordinates: [Number(lng), Number(lat)] },
+        key: 'tourStartLocation',
+        //Field where all the calculations will be stored
+        distanceField: 'distance',
+        //Based on the unit the user choose
+        distanceMultiplier: unit === 'km' ? 0.001 : 0.000621371,
+      },
+    },
+    {
+      $project: {
+        name: 1,
+        distance: 1,
+      },
+    },
+  ]);
+
+  res.status(200).json({
+    status: 'successful',
+    results: distances.length,
+    data: {
+      distances,
+    },
+  });
+});
 //Using the aggregation piepeline to figure out the lead organizer of the highest and lowest rated tours
 exports.getOrganizerStats = async (req, res) => {
   try {

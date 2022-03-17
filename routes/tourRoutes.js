@@ -85,6 +85,10 @@ router
   .route('/find-tours/center/:latlng/max/:max/min/:min/unit/:unit')
   .get(tourController.findTours);
 
+router
+  .route('/tour-distances/center/:latlng/unit/:unit')
+  .get(tourController.getTourDistances);
+
 //When a user hits this url take them to the review Router
 router.use('/:tourId/reviews', reviewRoute);
 

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { pipeline } = require('nodemailer/lib/xoauth2');
 const slugify = require('slugify');
 //Creating a schema
 const tourSchema = new mongoose.Schema(
@@ -158,11 +159,16 @@ tourSchema.pre('save', function (next) {
 });
 
 //Mongoose Query Middleware
-// tourSchema.pre(/^find/, function (next) {
-//   //Exclude the vip tours from all find operations
-//   this.find({ VIPTour: { $ne: true } });
-//   next();
-// });
+tourSchema.pre('aggregate', function (next) {
+  //Check if the pipeline has more than one obejct AND geoNear is first object in the pipeline
+  if (!(this.pipeline().length > 0 && '$geoNear' in this.pipeline()[0])) {
+    //Exclude the vip tours from all find operations
+    this.pipeline().unshift({
+      $match: { VIPTour: { $ne: true } },
+    });
+  }
+  next();
+});
 
 //Create a Pre hook middleware
 //On every find operator populate the tour/s with the guides information
