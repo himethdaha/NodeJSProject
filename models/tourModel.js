@@ -136,7 +136,8 @@ const tourSchema = new mongoose.Schema(
 //Indexes
 //tourStartLocation is the center point used when searching for tours within a certain distance
 //2dSphere because we're using real points in a sphere like shape
-tourSchema.index({ tourStartLocation: '2dsphere' });
+//Created this index via mongosh
+// tourSchema.index({ tourStartLocation: '2dsphere' });
 
 //Virtual populate for reviews
 tourSchema.virtual('reviews', {
@@ -157,11 +158,11 @@ tourSchema.pre('save', function (next) {
 });
 
 //Mongoose Query Middleware
-tourSchema.pre(/^find/, function (next) {
-  //Exclude the vip tours from all find operations
-  this.find({ VIPTour: { $ne: true } });
-  next();
-});
+// tourSchema.pre(/^find/, function (next) {
+//   //Exclude the vip tours from all find operations
+//   this.find({ VIPTour: { $ne: true } });
+//   next();
+// });
 
 //Create a Pre hook middleware
 //On every find operator populate the tour/s with the guides information

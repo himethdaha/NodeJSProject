@@ -78,13 +78,11 @@ router
   );
 
 router
-  .route('/find-tours/distance/:distance/center/:latlng/unit/:unit')
+  .route('/tours-near-me/distance/:distance/center/:latlng/unit/:unit')
   .get(tourController.toursNearMe);
 
 router
-  .route(
-    '/tours-near-me/center/:latlng/maxDistance/:max/minDistance/:min/unit/:unit'
-  )
+  .route('/find-tours/center/:latlng/max/:max/min/:min/unit/:unit')
   .get(tourController.findTours);
 
 //When a user hits this url take them to the review Router

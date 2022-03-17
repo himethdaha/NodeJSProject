@@ -94,9 +94,43 @@ exports.toursNearMe = catchAsyncError(async (req, res, next) => {
 });
 
 //Handler to find all tours within a specified max and min distances
-// exports.findTours = catchAsync(async (req, res, next) => {
+exports.findTours = catchAsyncError(async (req, res, next) => {
+  //Destruct the variables from the parameter
+  const { latlng, max, min, unit } = req.params;
+  //Get the lat.lng
+  const [lat, lng] = latlng.split(',');
+  console.log(lat, lng, max, min, unit);
+  //Check if the user entered the lat,lng
+  if (!lat || !lng) {
+    return next(new AppError(`Enter the latitude and longitude values`, 400));
+  }
 
-// });
+  //Convert min and max into meters
+  const minDistance = unit === 'km' ? min * 1000 : min * 1609.3;
+  const maxDistance = unit === 'km' ? max * 1000 : max * 1609.3;
+  console.log(maxDistance, minDistance);
+  //Find the tours with the $nearSphere query as the filter
+  const tours = await Tour.find({
+    tourStartLocation: {
+      $near: {
+        $geometry: {
+          type: 'Point',
+          coordinates: [lng, lat],
+        },
+        $minDistance: minDistance,
+        $maxDistance: maxDistance,
+      },
+    },
+  });
+
+  res.status(200).json({
+    status: 'successful',
+    noOfTours: tours.length,
+    data: {
+      tours: tours,
+    },
+  });
+});
 //Using the aggregation piepeline to figure out the lead organizer of the highest and lowest rated tours
 exports.getOrganizerStats = async (req, res) => {
   try {
