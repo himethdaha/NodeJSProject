@@ -1,0 +1,137 @@
+/*animations for the header text*/
+@keyframes moveInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-11rem); }
+  90% {
+    opacity: 1;
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  90% {
+    opacity: 1;
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+/*Universal Selector Reset*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  /*Setting the font size to be 10px if the default user-agent font size is 16px, so that I can make caluclations easily*/
+  /*Setting the font size as a percentage instead of strictly 10px, just in case the user changes the default font size in the browser from 16px.
+  So that my webpages root font size will change accordingly*/
+  /*The main purpose of setting the root element font size is to use 10px as the default font size.*/
+  /*To get 1rem to be equal to 10px, divide 10 by 16*/
+  font-size: 62.5%; }
+
+body {
+  /*Box-size is inherited by the universal selector*/
+  box-sizing: border-box; }
+
+body {
+  font-family: "Oswald", sans-serif;
+  /* font-size: 16px; */
+  font-weight: 400;
+  line-height: 1.6; }
+
+.main-heading {
+  color: #fff;
+  text-transform: uppercase; }
+  .main-heading__text-level-one {
+    display: block;
+    font-size: 15rem;
+    animation-name: moveInFromLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+  .main-heading__text-level-two {
+    display: block;
+    font-size: 5rem;
+    font-weight: 400;
+    animation-name: moveInFromRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    margin-bottom: 5rem; }
+
+.btn--discover {
+  background-color: #fff;
+  border-radius: 10rem;
+  padding: 1.2rem 2.4rem;
+  animation-name: moveInFromBottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0.1s;
+  animation-fill-mode: backwards; }
+  .btn--discover::after {
+    background-color: #fff; }
+
+/*General Button*/
+.btn:link,
+.btn:visited {
+  text-decoration: none;
+  color: #868e96;
+  font-size: 2.2rem;
+  transition: all 0.3s;
+  display: inline-block;
+  position: relative;
+  /*Pseudo elements allow us style parts of an element
+AFTER - style a virtual element right after the element we're selecting 
+After pseudo element is trated like a child element, of the element we're choosing*/
+  /*General Button*/
+  /*General Button*/ }
+  .btn:link:hover, .btn:link:active,
+  .btn:visited:hover,
+  .btn:visited:active {
+    box-shadow: 0rem 1.3rem 1rem #706f6f;
+    transform: translateY(-1rem); }
+  .btn:link::after,
+  .btn:visited::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    transition: all 0.5s;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10rem; }
+  .btn:link:hover::after,
+  .btn:visited:hover::after {
+    transform: scaleY(1.7) scaleX(1.4);
+    opacity: 0; }
+
+/*General Button*/
+.header {
+  height: 95vh;
+  /* background-image: url(../img/heroImg.jpg); */
+  background-image: linear-gradient(to right bottom, rgba(85, 83, 83, 0.596), rgba(53, 50, 50, 0.774)), url(../img/heroImg.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative; }
+  .header__heading-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }

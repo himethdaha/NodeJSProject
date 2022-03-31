@@ -1,0 +1,29 @@
+body {
+  font-family: "Oswald", sans-serif;
+  /* font-size: 16px; */
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.main-heading {
+  color: #fff;
+  text-transform: uppercase;
+
+  &__text-level-one {
+    display: block;
+    font-size: 15rem;
+    animation-name: moveInFromLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+  }
+
+  &__text-level-two {
+    display: block;
+    font-size: 5rem;
+    font-weight: 400;
+    animation-name: moveInFromRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    margin-bottom: 5rem;
+  }
+}

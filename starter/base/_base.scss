@@ -1,0 +1,21 @@
+/*Universal Selector Reset*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  /*Setting the font size to be 10px if the default user-agent font size is 16px, so that I can make caluclations easily*/
+  /*Setting the font size as a percentage instead of strictly 10px, just in case the user changes the default font size in the browser from 16px.
+  So that my webpages root font size will change accordingly*/
+  /*The main purpose of setting the root element font size is to use 10px as the default font size.*/
+  /*To get 1rem to be equal to 10px, divide 10 by 16*/
+  font-size: 62.5%;
+}
+body {
+  /*Box-size is inherited by the universal selector*/
+  box-sizing: border-box;
+}

@@ -1,0 +1,14 @@
+.btn--discover {
+  background-color: $white-background;
+  border-radius: 10rem;
+  padding: 1.2rem 2.4rem;
+  animation-name: moveInFromBottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0.1s;
+  animation-fill-mode: backwards;
+
+  &::after {
+    background-color: $white-background;
+  }
+}
