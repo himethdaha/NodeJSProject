@@ -1,0 +1,61 @@
+.row {
+  max-width: $grid-width;
+  background-color: #eee;
+  margin: 0 auto;
+
+  &:not(:last-child) {
+    margin-bottom: $row-vertical;
+  }
+
+  //Every row will contain the clearfix pseudo class
+  @include clearfix;
+
+  //Attribute selector
+  // ^ - select eveything beginning with the specified pattern
+  // $ - select everything ending with the specified pattern
+  // * - select everything containing the specified pattern
+  [class^='col-'] {
+    background-color: orangered;
+    float: left;
+
+    &:not(:last-child) {
+      margin-right: $col-margin-right;
+    }
+  }
+
+  .col-1-of-2 {
+    //calc is a css function.
+    width: calc((100% - #{$col-margin-right}) / 2);
+  }
+
+  .col-1-of-3 {
+    //calc is a css function.
+    width: calc((100% - 2 * #{$col-margin-right}) / 3);
+  }
+
+  .col-2-of-3 {
+    //calc is a css function.
+    width: calc(
+      (((100% - 2 * #{$col-margin-right}) / 3) * 2) + #{$col-margin-right}
+    );
+  }
+
+  .col-1-of-4 {
+    //calc is a css function.
+    width: calc((100% - 3 * #{$col-margin-right}) / 4);
+  }
+
+  .col-2-of-4 {
+    //calc is a css function.
+    width: calc(
+      ((100% - 3 * #{$col-margin-right}) / 4) * 2 + #{$col-margin-right}
+    );
+  }
+
+  .col-3-of-4 {
+    //calc is a css function.
+    width: calc(
+      ((100% - 3 * #{$col-margin-right}) / 4) * 3 + #{$col-margin-right} * 2
+    );
+  }
+}

@@ -1,15 +1,17 @@
-@import "abstracts/functions";
-@import "abstracts/mixings";
-@import "abstracts/variables";
+@import 'abstracts/functions';
+@import 'abstracts/mixings';
+@import 'abstracts/variables';
 
-@import "base/animations";
-@import "base/base";
-@import "base/typography";
-@import "base/utilities";
+@import 'base/animations';
+@import 'base/base';
+@import 'base/typography';
+@import 'base/utilities';
 
-@import "components/button_discover";
-@import "components/button";
+@import 'components/button_discover';
+@import 'components/button';
 
-@import "layout/header";
+@import 'layout/header';
 
-@import "pages/home";
+@import 'pages/home';
+
+@import 'layout/test-grid';
