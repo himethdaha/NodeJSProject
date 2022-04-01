@@ -50,7 +50,7 @@ body {
   box-sizing: border-box; }
 
 body {
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   /* font-size: 16px; */
   font-weight: 400;
   line-height: 1.6; }
@@ -72,6 +72,26 @@ body {
     animation-duration: 1s;
     animation-timing-function: ease-out;
     margin-bottom: 5rem; }
+
+.about__secondary-heading {
+  font-size: 4.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+  display: inline-block;
+  background-image: linear-gradient(to right, #414345, #232526);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: all 0.2s; }
+  .about__secondary-heading:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 2rem 3rem 2rem rgba(0, 0, 0, 0.2); }
+
+.u-align-text-center {
+  text-align: center; }
+
+.u-marg-bottom-8 {
+  margin-bottom: 8rem; }
 
 .btn--discover {
   background-color: #fff;
@@ -135,6 +155,10 @@ After pseudo element is trated like a child element, of the element we're choosi
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center; }
+
+.about {
+  background-color: #f7f7f7;
+  padding-top: 5rem; }
 
 .row {
   max-width: 114rem;
