@@ -87,6 +87,17 @@ body {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 2rem 3rem 2rem rgba(0, 0, 0, 0.2); }
 
+.about__description__heading {
+  font-size: 2.2rem;
+  margin-bottom: 3.2rem;
+  opacity: 0.9; }
+
+.about__description__text {
+  font-size: 2rem;
+  flex-wrap: wrap; }
+  .about__description__text:not(:last-child) {
+    margin-bottom: 3rem; }
+
 .u-align-text-center {
   text-align: center; }
 
@@ -142,6 +153,32 @@ After pseudo element is trated like a child element, of the element we're choosi
     opacity: 0; }
 
 /*General Button*/
+.about__images {
+  position: relative; }
+  .about__images__img {
+    height: 50%;
+    width: 40%;
+    box-shadow: 0px 3.3rem 2rem rgba(0, 0, 0, 0.25);
+    position: relative;
+    transition: all 0.2s;
+    outline-offset: 1.2rem; }
+    .about__images__img--img1 {
+      position: absolute;
+      top: -1rem;
+      left: 10%; }
+    .about__images__img--img2 {
+      position: absolute;
+      top: 6%;
+      left: 33%; }
+    .about__images__img--img3 {
+      top: 20%;
+      left: 20%; }
+    .about__images__img:hover {
+      z-index: 10;
+      transform: scale(1.2) translateY(-0.5rem);
+      box-shadow: 0px 4.3rem 2rem rgba(0, 0, 0, 0.35);
+      outline: 0.8rem solid black; }
+
 .header {
   height: 95vh;
   /* background-image: url(../img/heroImg.jpg); */
@@ -159,6 +196,30 @@ After pseudo element is trated like a child element, of the element we're choosi
 .about {
   background-color: #f7f7f7;
   padding-top: 5rem; }
+  .about__content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0rem 4rem 3rem 45rem; }
+  .about__description {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 45%; }
+  .about__btn:link, .about__btn:visited {
+    font-size: 2rem;
+    align-self: flex-start;
+    text-decoration: none;
+    padding: 0.5rem 0.5rem;
+    color: #000;
+    border-bottom: 1px solid currentColor;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.2s; }
+  .about__btn:hover, .about__btn:active {
+    transform: translateY(-0.2rem);
+    background-color: #000;
+    box-shadow: 0 0.75rem 1rem rgba(0, 0, 0, 0.25);
+    color: #cdd2d6; }
 
 .row {
   max-width: 114rem;

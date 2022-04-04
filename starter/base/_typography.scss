@@ -46,3 +46,18 @@ body {
     text-shadow: 2rem 3rem 2rem rgba(0, 0, 0, 0.2);
   }
 }
+
+.about__description__heading {
+  font-size: 2.2rem;
+  margin-bottom: 3.2rem;
+  opacity: 0.9;
+}
+
+.about__description__text {
+  font-size: 2rem;
+  flex-wrap: wrap;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}

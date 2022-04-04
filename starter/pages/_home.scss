@@ -1,4 +1,39 @@
 .about {
   background-color: #f7f7f7;
   padding-top: 5rem;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0rem 4rem 3rem 45rem;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 45%;
+  }
+
+  //   #868e96
+  &__btn:link,
+  &__btn:visited {
+    font-size: 2rem;
+    align-self: flex-start;
+    text-decoration: none;
+    padding: 0.5rem 0.5rem;
+    color: $color-black;
+    border-bottom: 1px solid currentColor;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+
+  &__btn:hover,
+  &__btn:active {
+    transform: translateY(-0.2rem);
+    background-color: $color-black;
+    box-shadow: 0 0.75rem 1rem rgba(0, 0, 0, 0.25);
+    color: #cdd2d6;
+  }
 }
