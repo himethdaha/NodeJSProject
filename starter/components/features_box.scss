@@ -1,0 +1,40 @@
+.features__box {
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  align-content: space-between;
+  border-radius: 4px;
+  box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.4);
+  flex-wrap: wrap;
+  flex: 0 0 23%;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.1) translateY(-1rem);
+    box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.4);
+  }
+}
+
+.features__icon {
+  font-size: 6rem;
+  //Since icon-font is text, we can do this. If it was an image, or an SVG i'll have to use mask
+  background-image: linear-gradient(to right, #6f7174, #232526);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 5rem;
+}
+
+.features__heading {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: 0.75px;
+  margin-bottom: 1.2rem;
+}
+
+.features__text {
+  font-weight: 400;
+  font-size: 1.65rem;
+}
