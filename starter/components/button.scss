@@ -2,7 +2,7 @@
 .btn:link,
 .btn:visited {
   text-decoration: none;
-  color: $text-primary-color;
+  color: #868e96;
   font-size: 2.2rem;
   transition: all 0.3s;
   display: inline-block;
@@ -20,7 +20,7 @@ After pseudo element is trated like a child element, of the element we're choosi
 
   /*General Button*/
   &::after {
-    content: "";
+    content: '';
     display: inline-block;
     height: 100%;
     width: 100%;
@@ -40,3 +40,43 @@ After pseudo element is trated like a child element, of the element we're choosi
 }
 
 /*General Button*/
+
+.btn--card:link,
+.btn--card:visited {
+  text-decoration: none;
+  color: #000;
+  font-size: 2.2rem;
+  transition: all 0.3s;
+  display: inline-block;
+  position: relative;
+
+  &:hover,
+  &:active {
+    box-shadow: 0rem 1.3rem 1rem rgba(77, 77, 77, 0.25);
+    transform: translateY(-1rem);
+  }
+
+  /*Pseudo elements allow us style parts of an element
+AFTER - style a virtual element right after the element we're selecting 
+After pseudo element is trated like a child element, of the element we're choosing*/
+
+  /*General Button*/
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    transition: all 0.5s;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10rem;
+  }
+  /*General Button*/
+
+  &:hover::after {
+    transform: scaleY(1.7) scaleX(1.4);
+    opacity: 0;
+  }
+}

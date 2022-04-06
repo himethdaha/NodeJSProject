@@ -154,7 +154,7 @@ After pseudo element is trated like a child element, of the element we're choosi
     transform: translateY(-1rem); }
   .btn:link::after,
   .btn:visited::after {
-    content: "";
+    content: '';
     display: inline-block;
     height: 100%;
     width: 100%;
@@ -170,6 +170,41 @@ After pseudo element is trated like a child element, of the element we're choosi
     opacity: 0; }
 
 /*General Button*/
+.btn--card:link,
+.btn--card:visited {
+  text-decoration: none;
+  color: #000;
+  font-size: 2.2rem;
+  transition: all 0.3s;
+  display: inline-block;
+  position: relative;
+  /*Pseudo elements allow us style parts of an element
+AFTER - style a virtual element right after the element we're selecting 
+After pseudo element is trated like a child element, of the element we're choosing*/
+  /*General Button*/
+  /*General Button*/ }
+  .btn--card:link:hover, .btn--card:link:active,
+  .btn--card:visited:hover,
+  .btn--card:visited:active {
+    box-shadow: 0rem 1.3rem 1rem rgba(77, 77, 77, 0.25);
+    transform: translateY(-1rem); }
+  .btn--card:link::after,
+  .btn--card:visited::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    transition: all 0.5s;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10rem; }
+  .btn--card:link:hover::after,
+  .btn--card:visited:hover::after {
+    transform: scaleY(1.7) scaleX(1.4);
+    opacity: 0; }
+
 .about__images {
   position: relative; }
   .about__images__img {
@@ -309,6 +344,32 @@ After pseudo element is trated like a child element, of the element we're choosi
         margin: 1rem 0; }
         .tours__card__info__list__item:not(:last-child) {
           border-bottom: 1px solid #d6d3d3; }
+  .tours__card__cta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10rem; }
+    .tours__card__cta__only {
+      color: #fff;
+      font-size: 4rem;
+      font-weight: 100;
+      text-transform: uppercase; }
+    .tours__card__cta__price {
+      color: #fff;
+      font-size: 7rem;
+      font-weight: 100;
+      margin-bottom: 6rem; }
+    .tours__card__cta__btn {
+      background-color: #fff;
+      border-radius: 10rem;
+      text-decoration: none;
+      padding: 1.2rem 4rem;
+      font-size: 2.6rem;
+      color: #000;
+      text-transform: uppercase; }
+      .tours__card__cta__btn::after {
+        background-color: #fff; }
   .tours__card:hover .tours__card__side--front {
     transform: rotateY(-180deg); }
   .tours__card:hover .tours__card__side--back {
