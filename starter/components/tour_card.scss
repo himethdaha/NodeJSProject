@@ -1,0 +1,62 @@
+.tours__flexbox {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tours__card {
+  -moz-perspective: 100rem;
+  perspective: 100rem;
+
+  height: 50rem;
+  width: 50rem;
+
+  border-radius: 1rem;
+  position: relative;
+
+  &__side {
+    transition: all 0.8s ease;
+    color: black;
+    font-size: 3rem;
+
+    height: 50rem;
+    width: 50rem;
+
+    border-radius: 1rem;
+    box-shadow: 0rem 2rem 3rem rgba(0, 0, 0, 0.3);
+    backface-visibility: hidden;
+
+    position: absolute;
+
+    &--front {
+      background-color: orangered;
+    }
+
+    //Back of the card is already rotated 180 deg in the beginning cos it doesn't face the user
+    &--back {
+      transform: rotateY(180deg);
+
+      &--first {
+        background-image: linear-gradient(to right bottom, #141e30, #243b55);
+      }
+
+      &--second {
+        background-image: linear-gradient(to right bottom, #232526, #414345);
+      }
+
+      &--third {
+        background-image: linear-gradient(to right bottom, #fbd3e9, #bb377d);
+      }
+    }
+  }
+
+  //When hovering over the parent element target the child elements and perform the transform
+  //If i didnt choose the parent element and just added the hover to the child elements, they would transform only when i hover over them individually
+  &:hover &__side--front {
+    transform: rotateY(180deg);
+  }
+
+  //Bring the back side of the card to the original position it would normally be in. Which is facing the user => 0 deg roataion
+  &:hover &__side--back {
+    transform: rotateY(0deg);
+  }
+}
