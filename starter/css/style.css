@@ -237,22 +237,21 @@ After pseudo element is trated like a child element, of the element we're choosi
 .tours__card {
   -moz-perspective: 100rem;
   perspective: 100rem;
-  height: 50rem;
-  width: 50rem;
-  border-radius: 1rem;
+  width: 47rem;
+  height: 56rem;
+  border-radius: 4px;
   position: relative; }
   .tours__card__side {
     transition: all 0.8s ease;
-    color: black;
-    font-size: 3rem;
-    height: 50rem;
-    width: 50rem;
-    border-radius: 1rem;
+    overflow: hidden;
+    width: 47rem;
+    height: 56rem;
+    border-radius: 4px;
     box-shadow: 0rem 2rem 3rem rgba(0, 0, 0, 0.3);
     backface-visibility: hidden;
     position: absolute; }
     .tours__card__side--front {
-      background-color: orangered; }
+      background-color: #fff; }
     .tours__card__side--back {
       transform: rotateY(180deg); }
       .tours__card__side--back--first {
@@ -261,8 +260,57 @@ After pseudo element is trated like a child element, of the element we're choosi
         background-image: linear-gradient(to right bottom, #232526, #414345); }
       .tours__card__side--back--third {
         background-image: linear-gradient(to right bottom, #fbd3e9, #bb377d); }
+  .tours__card__image {
+    height: 20rem;
+    background-size: cover;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); }
+    .tours__card__image--first {
+      background-image: linear-gradient(to right bottom, #141e30, #243b55), url(../img/card-1.jpg); }
+    .tours__card__image--second {
+      background-image: linear-gradient(to right bottom, #232526, #414345), url(../img/card-2.jpg); }
+    .tours__card__image--third {
+      background-image: linear-gradient(to right bottom, #fbd3e9, #bb377d), url(../img/card-3.jpg); }
+  .tours__card__heading {
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 200;
+    position: absolute;
+    top: 18%;
+    left: 46%;
+    width: 50%;
+    text-align: right; }
+  .tours__card__heading__span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; }
+    .tours__card__heading__span--first {
+      background-image: linear-gradient(to right bottom, rgba(20, 30, 48, 0.85), rgba(36, 59, 85, 0.85)); }
+    .tours__card__heading__span--second {
+      background-image: linear-gradient(to right bottom, rgba(35, 37, 38, 0.85), rgba(65, 67, 69, 0.85)); }
+    .tours__card__heading__span--third {
+      background-image: linear-gradient(to right bottom, rgba(251, 211, 233, 0.85), rgba(187, 55, 125, 0.85)); }
+  .tours__card__info {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #474646;
+    padding-top: 2rem; }
+    .tours__card__info__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center; }
+      .tours__card__info__list__item {
+        width: 65%;
+        margin: 1rem 0; }
+        .tours__card__info__list__item:not(:last-child) {
+          border-bottom: 1px solid #d6d3d3; }
   .tours__card:hover .tours__card__side--front {
-    transform: rotateY(180deg); }
+    transform: rotateY(-180deg); }
   .tours__card:hover .tours__card__side--back {
     transform: rotateY(0deg); }
 
