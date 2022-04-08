@@ -29,6 +29,17 @@
     opacity: 1;
     transform: translateY(0); } }
 
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    box-shadow: none; }
+  50% {
+    transform: translateY(-0.2rem) scale(1.05);
+    box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.4); }
+  100% {
+    transform: scale(1);
+    box-shadow: none; } }
+
 /*Universal Selector Reset*/
 *,
 *::after,
@@ -74,8 +85,8 @@ body {
     animation-timing-function: ease-out;
     margin-bottom: 5rem; }
 
-/*ABOUT SECTION*/
-.about__secondary-heading {
+/*COMMON SECONDARY HEADING*/
+.secondary__heading {
   font-size: 4.2rem;
   text-transform: uppercase;
   letter-spacing: 0.18rem;
@@ -85,35 +96,25 @@ body {
   background-clip: text;
   color: transparent;
   transition: all 0.2s; }
-  .about__secondary-heading:hover {
+  .secondary__heading:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
-    text-shadow: 2rem 3rem 2rem rgba(0, 0, 0, 0.2); }
+    text-shadow: 2rem 3rem 2rem rgba(0, 0, 0, 0.3); }
 
-.about__description__heading {
+/*COMMON THIRD HEADING*/
+.header__tertiary {
   font-size: 2.2rem;
   margin-bottom: 3.2rem;
   opacity: 0.9; }
 
+/*ABOUT SECTION*/
 .about__description__text {
   font-size: 2rem;
   flex-wrap: wrap; }
   .about__description__text:not(:last-child) {
     margin-bottom: 3rem; }
 
-/*TOUR CARD SECTION*/
-.tours__heading {
-  font-size: 4.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18rem;
-  display: inline-block;
-  background-image: linear-gradient(to right, #414345, #232526);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  transition: all 0.2s; }
-  .tours__heading:hover {
-    transform: skewY(2deg) skewX(15deg) scale(1.1);
-    text-shadow: 2rem 3rem 2rem rgba(0, 0, 0, 0.3); }
+.stories__heading {
+  margin-top: 3rem; }
 
 .u-align-text-center {
   text-align: center; }
@@ -375,6 +376,61 @@ After pseudo element is trated like a child element, of the element we're choosi
   .tours__card:hover .tours__card__side--back {
     transform: rotateY(0deg); }
 
+.stories__container {
+  padding: 5rem;
+  padding-left: 8rem;
+  box-shadow: 0 3rem 4rem rgba(0, 0, 0, 0.6);
+  width: 75%;
+  border-radius: 3px;
+  margin: 0 auto;
+  transform: skewX(-12deg); }
+
+.stories__user {
+  width: 15rem;
+  height: 15rem;
+  background-color: orangered;
+  transform: translateX(-3rem) skewX(12.01deg);
+  position: relative;
+  overflow: hidden;
+  float: left;
+  -webkit-shape-outside: circle(50% at 50% 50%);
+  shape-outside: circle(50% at 50% 50%);
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+  transition: all 0.2s; }
+  .stories__user__img {
+    height: 100%;
+    transform: translateX(-3rem) scale(1.1);
+    transition: all 0.2s;
+    backface-visibility: hidden; }
+  .stories__user__name {
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: 2.3rem;
+    color: #fff;
+    opacity: 0;
+    transition: all 0.2s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-30%, 20%); }
+  .stories__user:hover .stories__user__img {
+    filter: blur(3px) brightness(80%);
+    transform: translateX(-3rem) scale(1); }
+  .stories__user:hover .stories__user__name {
+    transform: translate(-30%, -50%);
+    opacity: 1; }
+
+.stories__description {
+  transform: skewX(12deg); }
+
+.stories__header {
+  margin-bottom: 1rem;
+  display: inline-block; }
+
+.stories__text {
+  font-size: 2rem; }
+
 .header {
   height: 95vh;
   /* background-image: url(../img/heroImg.jpg); */
@@ -419,7 +475,7 @@ After pseudo element is trated like a child element, of the element we're choosi
 
 /*Features section*/
 .features {
-  margin: -9rem 4rem 0 4rem;
+  margin: -8rem 4rem 0 4rem;
   background-image: linear-gradient(to right bottom, rgba(61, 61, 61, 0.596), rgba(34, 33, 33, 0.774)), url(../img/features.jpg);
   background-size: cover;
   background-position: center center;
@@ -441,7 +497,28 @@ After pseudo element is trated like a child element, of the element we're choosi
   padding: 20rem 10rem;
   background-color: #f7f7f7;
   margin-top: -10rem;
-  height: 100rem; }
+  height: 120rem; }
+  .tours__discover__btn {
+    color: #fff;
+    display: inline-block;
+    background-color: #000;
+    border-radius: 10rem;
+    padding: 2rem 4rem;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 100;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 45%;
+    margin-top: 14rem;
+    transition: all 0.2s; }
+    .tours__discover__btn:hover {
+      animation: pulsate 1s infinite; }
+
+/*STORIES SECTION*/
+.stories {
+  max-width: 120rem;
+  margin: 0 auto; }
 
 .row {
   max-width: 114rem;

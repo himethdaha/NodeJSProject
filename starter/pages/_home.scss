@@ -40,7 +40,7 @@
 
 /*Features section*/
 .features {
-  margin: -9rem 4rem 0 4rem;
+  margin: -8rem 4rem 0 4rem;
   background-image: linear-gradient(
       to right bottom,
       rgba(61, 61, 61, 0.596),
@@ -77,5 +77,32 @@
   padding: 20rem 10rem;
   background-color: #f7f7f7;
   margin-top: -10rem;
-  height: 100rem;
+  height: 120rem;
+  // position: relative;
+
+  &__discover__btn {
+    color: #fff;
+    display: inline-block;
+    background-color: #000;
+    border-radius: 10rem;
+    padding: 2rem 4rem;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 100;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 45%;
+    margin-top: 14rem;
+    transition: all 0.2s;
+
+    &:hover {
+      animation: pulsate 1s infinite;
+    }
+  }
+}
+
+/*STORIES SECTION*/
+.stories {
+  max-width: 120rem;
+  margin: 0 auto;
 }
