@@ -380,15 +380,17 @@ After pseudo element is trated like a child element, of the element we're choosi
   padding: 5rem;
   padding-left: 8rem;
   box-shadow: 0 3rem 4rem rgba(0, 0, 0, 0.6);
-  width: 75%;
+  width: 45%;
   border-radius: 3px;
   margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.6);
   transform: skewX(-12deg); }
+  .stories__container:not(:last-child) {
+    margin-bottom: 6rem; }
 
 .stories__user {
   width: 15rem;
   height: 15rem;
-  background-color: orangered;
   transform: translateX(-3rem) skewX(12.01deg);
   position: relative;
   overflow: hidden;
@@ -431,6 +433,46 @@ After pseudo element is trated like a child element, of the element we're choosi
 .stories__text {
   font-size: 2rem; }
 
+.stories__btn:link,
+.stories__btn:visited {
+  margin-top: 3.5rem;
+  font-size: 3rem;
+  margin-left: 47%; }
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.3;
+  overflow: hidden; }
+  .bg-video__content {
+    object-fit: cover;
+    width: 100%;
+    height: 100%; }
+
+.link__btn:link,
+.link__btn:visited {
+  font-size: 2rem;
+  align-self: flex-start;
+  text-decoration: none;
+  padding: 0.5rem 0.5rem;
+  color: #000;
+  border-bottom: 1px solid currentColor;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.2s; }
+
+.link__btn:hover,
+.link__btn:active {
+  transform: translateY(-0.2rem);
+  background-color: #000;
+  box-shadow: 0 0.75rem 1rem rgba(0, 0, 0, 0.25);
+  color: #cdd2d6; }
+
 .header {
   height: 95vh;
   /* background-image: url(../img/heroImg.jpg); */
@@ -456,22 +498,6 @@ After pseudo element is trated like a child element, of the element we're choosi
     display: flex;
     flex-direction: column;
     flex: 0 0 45%; }
-  .about__btn:link, .about__btn:visited {
-    font-size: 2rem;
-    align-self: flex-start;
-    text-decoration: none;
-    padding: 0.5rem 0.5rem;
-    color: #000;
-    border-bottom: 1px solid currentColor;
-    font-weight: 500;
-    cursor: pointer;
-    display: inline-block;
-    transition: all 0.2s; }
-  .about__btn:hover, .about__btn:active {
-    transform: translateY(-0.2rem);
-    background-color: #000;
-    box-shadow: 0 0.75rem 1rem rgba(0, 0, 0, 0.25);
-    color: #cdd2d6; }
 
 /*Features section*/
 .features {
@@ -497,7 +523,8 @@ After pseudo element is trated like a child element, of the element we're choosi
   padding: 20rem 10rem;
   background-color: #f7f7f7;
   margin-top: -10rem;
-  height: 120rem; }
+  height: 115rem;
+  margin-bottom: 10rem; }
   .tours__discover__btn {
     color: #fff;
     display: inline-block;
@@ -517,8 +544,10 @@ After pseudo element is trated like a child element, of the element we're choosi
 
 /*STORIES SECTION*/
 .stories {
-  max-width: 120rem;
-  margin: 0 auto; }
+  max-width: 235rem;
+  margin: 0 auto;
+  padding-top: 4rem;
+  position: relative; }
 
 .row {
   max-width: 114rem;
