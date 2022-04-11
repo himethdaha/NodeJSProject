@@ -84,7 +84,7 @@
 .stories {
   max-width: 235rem;
   margin: 0 auto;
-  padding-top: 4rem;
+  padding: 4rem 0;
   position: relative;
 }
 
@@ -92,7 +92,7 @@
 .tour__booking {
   margin-top: 4rem;
   padding: 15rem 0;
-  // background-image: linear-gradient(#232526, #414345);
+  background-image: linear-gradient(#dddddd69, #dddddd);
 
   &__container {
     background-image: linear-gradient(
@@ -105,13 +105,8 @@
     background-size: cover;
     background-position: center center;
     border-radius: 3px;
-    height: 50rem;
     max-width: 150rem;
     margin: 0 auto;
     box-shadow: 0rem 3rem 4rem rgba(0, 0, 0, 0.3);
   }
-}
-
-.booking__form {
-  padding: 6rem;
 }

@@ -205,18 +205,51 @@
       <!--TOUR BOOKING SECTION-->
       <section class="tour__booking">
         <div class="tour__booking__container">
+            <h2 class="booking__heading secondary__heading">begin your story now</h2>
           <form action="#" class="booking__form">
             <div class="booking__form__group">
               <input type="text" class="input" id="fName" placeholder="First Name" required>
               <label for="fName" class="label">First Name</label>
             </div>
             <div class="booking__form__group">
-              <input type="text" class="input" id="lName" placeholder="Last Name">
+              <input type="text" class="input" id="lName" placeholder="Last Name" required>
               <label for="lName" class="label">Last Name</label>
             </div>
             <div class="booking__form__group">
-              <input type="email" class="input" id="email" placeholder="Email" required>
+              <input type="email" class="input" id="email" placeholder="Email" required autocomplete="off">
               <label for="email" class="label">Email</label>           
+            </div>
+            <!--radio btn group-->
+            <div class="booking__form__group">
+              <div class="radio-btn__group">
+                <input type="radio" class="radio-btn" name="tour-type" id="nature-tour" >
+                <label for="nature-tour" class="radio-btn-label" tabindex="0">
+                  <span class="custom-radio"></span>
+                  Nature
+                </label>
+              </div>
+              <div class="radio-btn__group">
+                <input type="radio" class="radio-btn" name="tour-type" id="horror-tour" >
+                <label for="horror-tour" class="radio-btn-label" tabindex="0">
+                  <span class="custom-radio"></span>
+                  Horror
+                </label>
+              </div>
+              <div class="radio-btn__group">
+                <input type="radio" class="radio-btn" name="tour-type" id="dare-tour" >
+                <label for="dare-tour" class="radio-btn-label" tabindex="0">
+                  <span class="custom-radio"></span>
+                  DareDevil</label>
+              </div>
+              <div class="radio-btn__group">
+                <input type="radio" class="radio-btn" name="tour-type" id="mysterious-tour" >
+                <label for="mysterious-tour" class="radio-btn-label" tabindex="0">
+                  <span class="custom-radio"></span>
+                  Mysterious</label>
+              </div>
+              <div class="booking__form__group">
+                <button class="form-submit-btn btn--card">Submit &rarr;</button>
+              </div>
             </div>
           </form>
         </div>
