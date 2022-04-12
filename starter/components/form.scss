@@ -70,53 +70,54 @@
   font-size: 2.2rem;
   font-weight: 100;
   margin: 1rem 0;
-}
 
-.radio-btn {
-  display: none;
-}
-
-.radio-btn-label {
-  cursor: pointer;
-  position: relative;
-  padding-left: 4rem;
-}
-//Custom radio button
-.custom-radio {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 10rem;
-  border: 4px solid #2f9e44;
-  display: inline-block;
-  position: absolute;
-  left: 0;
-  top: 0;
-
-  //Styling the inner circle
-  &::after {
-    content: '';
-    width: 1.4rem;
-    height: 1.4rem;
-    border-radius: 10rem;
-    background-color: #2f9e44;
-    position: absolute;
-    opacity: 0;
-    //To center
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.2s;
+  &__radio-btn {
+    display: none;
   }
-}
 
-//To show the inner circle only if the radio-btn is clicked
-/*
+  &__radio-btn-label {
+    cursor: pointer;
+    position: relative;
+    padding-left: 4rem;
+  }
+
+  //Custom radio button
+  &__custom-radio {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 10rem;
+    border: 4px solid #2f9e44;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    //Styling the inner circle
+    &::after {
+      content: '';
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 10rem;
+      background-color: #2f9e44;
+      position: absolute;
+      opacity: 0;
+      //To center
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.2s;
+    }
+  }
+
+  //To show the inner circle only if the radio-btn is clicked
+  /*
 Steps
 1 - check if the radio-btn is clicked
 2 - If so, select the adjacent sibling, which is the label
 3 - Then, select the child element of the label, which is the span element (custom-radio)*/
-.radio-btn:checked + .radio-btn-label .custom-radio::after {
-  opacity: 1;
+  &__radio-btn:checked + &__radio-btn-label &__custom-radio::after {
+    opacity: 1;
+  }
 }
 
 //Form submit btn
