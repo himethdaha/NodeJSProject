@@ -638,6 +638,64 @@ Steps
     display: inline-block;
     padding-top: 2rem; }
 
+.navigation__label {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 10rem;
+  background-color: #fff;
+  z-index: 2000;
+  position: fixed;
+  right: 1%;
+  top: 4%; }
+
+.navigation__background {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 10rem;
+  background-image: radial-gradient(#232526, #414345);
+  position: fixed;
+  z-index: 1000;
+  right: 1%;
+  top: 4.5%;
+  transform: scale(90); }
+
+.navigation__navbar {
+  position: fixed;
+  text-align: center;
+  z-index: 1500;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+
+.navigation__list {
+  list-style: none;
+  counter-reset: links; }
+
+.navigation__item:not(:last-child) {
+  margin-bottom: 1.6rem; }
+
+.navigation__link:link, .navigation__link:visited {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 6rem;
+  color: #000;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  background-image: linear-gradient(120deg, transparent 0%, transparent 50%, white 50%);
+  background-size: 220%;
+  transition: all 0.3s; }
+  .navigation__link:link::before, .navigation__link:visited::before {
+    counter-increment: links;
+    content: "0" counter(links);
+    font-size: 6rem;
+    font-weight: 100;
+    margin-right: 2rem; }
+
+.navigation__link:hover, .navigation__link:active {
+  transform: translateX(1rem) rotate(0.1deg);
+  background-position: 100%; }
+
 .about {
   background-color: #f7f7f7;
   padding-top: 5rem; }
