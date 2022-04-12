@@ -638,6 +638,9 @@ Steps
     display: inline-block;
     padding-top: 2rem; }
 
+.navigation__checkbox {
+  display: none; }
+
 .navigation__label {
   height: 7rem;
   width: 7rem;
@@ -645,6 +648,7 @@ Steps
   background-color: #fff;
   z-index: 2000;
   position: fixed;
+  cursor: pointer;
   right: 1%;
   top: 4%; }
 
@@ -652,24 +656,33 @@ Steps
   height: 6rem;
   width: 6rem;
   border-radius: 10rem;
-  background-image: radial-gradient(#232526, #414345);
+  background-image: radial-gradient(#485563, #29323c);
   position: fixed;
   z-index: 1000;
+  transition: transform 0.6s cubic-bezier(0.37, 0, 0.63, 1);
   right: 1%;
-  top: 4.5%;
-  transform: scale(90); }
+  top: 4.5%; }
 
 .navigation__navbar {
   position: fixed;
+  top: 0;
+  left: 0;
   text-align: center;
   z-index: 1500;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%); }
+  height: 100vh;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
 
 .navigation__list {
   list-style: none;
-  counter-reset: links; }
+  counter-reset: links;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; }
 
 .navigation__item:not(:last-child) {
   margin-bottom: 1.6rem; }
@@ -683,7 +696,7 @@ Steps
   text-transform: uppercase;
   letter-spacing: 0.25rem;
   background-image: linear-gradient(120deg, transparent 0%, transparent 50%, white 50%);
-  background-size: 220%;
+  background-size: 240%;
   transition: all 0.3s; }
   .navigation__link:link::before, .navigation__link:visited::before {
     counter-increment: links;
@@ -695,6 +708,14 @@ Steps
 .navigation__link:hover, .navigation__link:active {
   transform: translateX(1rem) rotate(0.1deg);
   background-position: 100%; }
+
+.navigation__checkbox:checked ~ .navigation__background {
+  transform: scale(90); }
+
+.navigation__checkbox:checked ~ .navigation__navbar {
+  opacity: 1;
+  visibility: visible;
+  width: 100%; }
 
 .about {
   background-color: #f7f7f7;

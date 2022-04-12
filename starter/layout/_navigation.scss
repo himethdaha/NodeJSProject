@@ -1,5 +1,6 @@
 .navigation {
   &__checkbox {
+    display: none;
   }
   &__label {
     height: 7rem;
@@ -8,6 +9,7 @@
     background-color: $white-background;
     z-index: 2000;
     position: fixed;
+    cursor: pointer;
 
     right: 1%;
     top: 4%;
@@ -16,27 +18,38 @@
     height: 6rem;
     width: 6rem;
     border-radius: 10rem;
-    background-image: radial-gradient(#232526, #414345);
+    background-image: radial-gradient(#485563, #29323c);
     position: fixed;
     z-index: 1000;
+    transition: transform 0.6s cubic-bezier(0.37, 0, 0.63, 1);
 
     right: 1%;
     top: 4.5%;
-    transform: scale(90);
+    // transform: scale(90);
   }
   &__navbar {
     position: fixed;
+    top: 0;
+    left: 0;
     text-align: center;
     z-index: 1500;
+    height: 100vh;
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    // transform: translate(-50%, -50%);
   }
   &__list {
     list-style: none;
     //Counter for the list items
     counter-reset: links;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
   }
   &__item {
     &:not(:last-child) {
@@ -61,8 +74,8 @@
       white 50%
     );
     //To push the white color to the right completely
-    //This is like giving each color 110%  (which is the entire elements) size. so that half of the container is transparent and other white (110 + 110)
-    background-size: 220%;
+    //This is like giving each color 120%  (which is the entire elements) size. so that half of the container is transparent and other white (120 + 120)
+    background-size: 240%;
     transition: all 0.3s;
 
     &::before {
@@ -80,5 +93,17 @@
     //Move the background in the X axis 100% of the entire element (from left-right)
     //right is 1100% horizontally
     background-position: 100%;
+  }
+
+  //If the checkbox is checked scale the background
+  &__checkbox:checked ~ &__background {
+    transform: scale(90);
+  }
+
+  //If the checkbox is checked make the navigation visible
+  &__checkbox:checked ~ &__navbar {
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
   }
 }
