@@ -6,6 +6,10 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+
   &__container {
     background-color: #fff;
     width: 70%;
@@ -14,6 +18,35 @@
     margin: 15rem auto;
     justify-content: space-between;
     overflow: hidden;
+    position: relative;
+    transform: scale(0.25);
+    transition: all 0.5s 0.2s;
+  }
+
+  //Close state
+  &__close {
+    position: absolute;
+    top: -2%;
+    right: 1%;
+    font-size: 5rem;
+    color: rgb(53, 52, 52);
+    text-decoration: none;
+    transition: all 0.2s;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  //Open state
+  //When the book now button of the tour card is clicked. The target pseudo attribute is activated
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:target &__container {
+    transform: scale(1);
   }
 
   &__imgs {
@@ -58,7 +91,7 @@
     text-transform: uppercase;
     background-color: #000;
     color: #fff;
-    padding: 1.2rem 2rem;
+    padding: 1.4rem 2.2rem;
     border-radius: 10rem;
     width: 20rem;
 

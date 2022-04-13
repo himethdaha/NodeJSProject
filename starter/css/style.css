@@ -584,7 +584,10 @@ Steps
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 10; }
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s; }
   .popup__container {
     background-color: #fff;
     width: 70%;
@@ -592,7 +595,25 @@ Steps
     display: flex;
     margin: 15rem auto;
     justify-content: space-between;
-    overflow: hidden; }
+    overflow: hidden;
+    position: relative;
+    transform: scale(0.25);
+    transition: all 0.5s 0.2s; }
+  .popup__close {
+    position: absolute;
+    top: -2%;
+    right: 1%;
+    font-size: 5rem;
+    color: #353434;
+    text-decoration: none;
+    transition: all 0.2s; }
+    .popup__close:hover {
+      color: #000; }
+  .popup:target {
+    opacity: 1;
+    visibility: visible; }
+  .popup:target .popup__container {
+    transform: scale(1); }
   .popup__imgs {
     display: flex;
     flex-direction: column;
@@ -623,7 +644,7 @@ Steps
     text-transform: uppercase;
     background-color: #000;
     color: #fff;
-    padding: 1.2rem 2rem;
+    padding: 1.4rem 2.2rem;
     border-radius: 10rem;
     width: 20rem; }
     .popup__btn:hover {
