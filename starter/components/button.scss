@@ -52,6 +52,7 @@ After pseudo element is trated like a child element, of the element we're choosi
     display: inline-block;
     position: relative;
     border: none;
+    cursor: pointer;
 
     &:hover,
     &:active {
