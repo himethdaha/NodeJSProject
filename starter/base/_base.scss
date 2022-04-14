@@ -14,6 +14,34 @@ html {
   /*The main purpose of setting the root element font size is to use 10px as the default font size.*/
   /*To get 1rem to be equal to 10px, divide 10 by 16*/
   font-size: 62.5%;
+
+  @include respond(tab-land) {
+    //At 1200 px and less,
+    //1 rem = 9px
+    //9/16 = 56.25%
+    font-size: 56.25%;
+  }
+
+  @include respond(tab-port) {
+    //At 900 px and less,
+    //1 rem = 8px
+    //8/16 = 50%
+    font-size: 50%;
+  }
+
+  // @include respond(tab-port) {
+  //   //At 600 px and less,
+  //   //1 rem = 6px
+  //   //6/16 = 50%
+  //   font-size: 37.5%;
+  // }
+
+  @include respond(lg-desk) {
+    //At 1800 px or more,
+    //1 rem = 12px
+    //12/16 = 75%
+    font-size: 75%;
+  }
 }
 body {
   /*Box-size is inherited by the universal selector*/

@@ -51,6 +51,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
+    text-align: center;
   }
   &__item {
     &:not(:last-child) {
@@ -118,13 +119,14 @@
     &::before,
     &::after {
       width: 3rem;
-      height: 0.25rem;
+      height: 0.2rem;
       display: inline-block;
       background-color: #000;
       position: absolute;
       left: 50%;
-      transform: translate(-50%, -50%);
       transition: all 0.3s;
+      transform: translate(-50%, -50%);
+      backface-visibility: hidden;
     }
 
     &::before,
@@ -132,7 +134,7 @@
       content: '';
     }
     &::before {
-      top: -0.8rem;
+      top: -0.6rem;
     }
 
     &::after {
@@ -142,11 +144,11 @@
 
   //To move the before and after pseudo class lines on label hover
   &__label:hover &__icon::before {
-    top: -1.1rem;
+    top: -0.8rem;
   }
 
   &__label:hover &__icon::after {
-    top: 1.1rem;
+    top: 1rem;
   }
 
   //To show the cancel icon when the checkbox is checked

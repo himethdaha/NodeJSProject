@@ -5,3 +5,43 @@
     clear: both;
   }
 }
+
+/*MEDIA QUERIES!!!
+
+Media queries aren't affected by rem and em values we set in the root
+1 em = 16px 
+
+----DEVICES----
+phone = 600px
+portrait tab = 900px
+landscape tab = 1200px
+large desktops = 1800px
+
+Below is a mixin for the media queries*/
+
+@mixin respond($breakpoint) {
+  //600px => 600/16
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      @content;
+    }
+  }
+  //900px => 900/16
+  @if $breakpoint == tab-port {
+    @media (max-width: 56.25em) {
+      @content;
+    }
+  }
+  //1200px => 1200/16
+  @if $breakpoint == tab-land {
+    @media (max-width: 75em) {
+      @content;
+    }
+  }
+  //1800px => 1800/16
+  @if $breakpoint == lg-desk {
+    @media (min-width: 112.5em) {
+      @content;
+    }
+  }
+}

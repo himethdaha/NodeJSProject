@@ -1,3 +1,15 @@
+/*MEDIA QUERIES!!!
+
+Media queries aren't affected by rem and em values we set in the root
+1 em = 16px 
+
+----DEVICES----
+phone = 600px
+portrait tab = 900px
+landscape tab = 1200px
+large desktops = 1800px
+
+Below is a mixin for the media queries*/
 /*animations for the header text*/
 @keyframes moveInFromLeft {
   0% {
@@ -55,6 +67,15 @@ html {
   /*The main purpose of setting the root element font size is to use 10px as the default font size.*/
   /*To get 1rem to be equal to 10px, divide 10 by 16*/
   font-size: 62.5%; }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   /*Box-size is inherited by the universal selector*/
@@ -760,7 +781,8 @@ Steps
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%; }
+    width: 100%;
+    text-align: center; }
   .navigation__item:not(:last-child) {
     margin-bottom: 1.6rem; }
   .navigation__link:link, .navigation__link:visited {
@@ -794,23 +816,24 @@ Steps
     margin-top: 3.5rem; }
     .navigation__icon, .navigation__icon::before, .navigation__icon::after {
       width: 3rem;
-      height: 0.25rem;
+      height: 0.2rem;
       display: inline-block;
       background-color: #000;
       position: absolute;
       left: 50%;
+      transition: all 0.3s;
       transform: translate(-50%, -50%);
-      transition: all 0.3s; }
+      backface-visibility: hidden; }
     .navigation__icon::before, .navigation__icon::after {
       content: ''; }
     .navigation__icon::before {
-      top: -0.8rem; }
+      top: -0.6rem; }
     .navigation__icon::after {
       top: 0.8rem; }
   .navigation__label:hover .navigation__icon::before {
-    top: -1.1rem; }
+    top: -0.8rem; }
   .navigation__label:hover .navigation__icon::after {
-    top: 1.1rem; }
+    top: 1rem; }
   .navigation__checkbox:checked + .navigation__label .navigation__icon {
     background-color: transparent; }
   .navigation__checkbox:checked + .navigation__label .navigation__icon::before {
