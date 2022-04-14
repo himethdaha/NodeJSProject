@@ -8,19 +8,65 @@
     transition: all 0.3s;
     outline-offset: 1.2rem;
 
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      width: 60%;
+    }
+
+    //Media query for <= 600px
+    @include respond(phone) {
+      width: 70%;
+    }
+
     &--img1 {
       position: absolute;
       top: -1rem;
       left: 10%;
+
+      //Media query for <= 900px
+      @include respond(tab-port) {
+        top: -6rem;
+        left: 6%;
+      }
+
+      //Media query for <= 600px
+      @include respond(phone) {
+        top: -18rem;
+        left: 6%;
+      }
     }
     &--img2 {
       position: absolute;
       top: 6%;
       left: 33%;
+
+      //Media query for <= 900px
+      @include respond(tab-port) {
+        top: -3rem;
+        left: 35%;
+      }
+
+      //Media query for <= 600px
+      @include respond(phone) {
+        top: -15rem;
+        left: 30%;
+      }
     }
     &--img3 {
-      top: 20%;
+      top: 25%;
       left: 20%;
+
+      //Media query for <= 900px
+      @include respond(tab-port) {
+        top: 15%;
+        left: 20%;
+      }
+
+      //Media query for <= 600px
+      @include respond(phone) {
+        top: -9rem;
+        left: 15%;
+      }
     }
 
     &:hover {

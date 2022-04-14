@@ -17,16 +17,27 @@
     text-transform: uppercase;
     letter-spacing: 0.18rem;
     display: inline-block;
+    text-align: center;
   }
 
   &__info {
     display: flex;
     justify-content: space-around;
     align-content: center;
+
+    //Media query for <= 1200px
+    @include respond(tab-land) {
+      justify-content: space-evenly;
+    }
   }
 
   &__navigation {
     flex: 0 0 30%;
+
+    //Media query for <= 1200px
+    @include respond(tab-land) {
+      flex: 0 0 45%;
+    }
   }
 
   &__list {
@@ -36,6 +47,11 @@
     justify-content: space-between;
     border-top: 1px solid #fff;
     padding-top: 2rem;
+
+    //Media query for <= 1200px
+    @include respond(tab-land) {
+      font-size: 1.8rem;
+    }
   }
 
   &__item {
@@ -63,7 +79,14 @@
     color: #fff;
     font-size: 2.6rem;
     font-weight: 100;
-    width: 71.361rem;
+    // width: 71.361rem;
+    flex: 0 0 30%;
+
+    //Media query for <= 1200px
+    @include respond(tab-land) {
+      font-size: 2.2rem;
+      flex: 0 0 35%;
+    }
   }
 
   &__copyright {

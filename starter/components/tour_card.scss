@@ -1,22 +1,44 @@
 .tours__flexbox {
   display: flex;
   justify-content: space-around;
+
+  //Media query for <= 900px
+  @include respond(tab-port) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  //Media query for <= 1200px
+  @include respond(tab-land) {
+    justify-content: space-between;
+  }
 }
 
 .tours__card {
   -moz-perspective: 100rem;
   perspective: 100rem;
 
-  width: 47rem;
+  width: 40rem;
   height: 56rem;
   border-radius: 4px;
   position: relative;
+
+  //Media query for <= 1200px
+  @include respond(tab-land) {
+    width: 37rem;
+  }
+
+  //Media query for <= 900px
+  @include respond(tab-port) {
+    width: 100%;
+    margin-bottom: 5rem;
+  }
 
   &__side {
     transition: all 0.8s ease;
 
     overflow: hidden;
-    width: 47rem;
+    width: 40rem;
     height: 56rem;
     border-radius: 4px;
 
@@ -24,7 +46,15 @@
     backface-visibility: hidden;
 
     position: absolute;
+    //Media query for <= 1200px
+    @include respond(tab-land) {
+      width: 37rem;
+    }
 
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      width: 100%;
+    }
     &--front {
       background-color: #fff;
     }
@@ -86,6 +116,18 @@
     left: 46%;
     width: 50%;
     text-align: right;
+
+    //Media query for <= 1200px
+    @include respond(tab-land) {
+      font-size: 2.4rem;
+    }
+
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      font-size: 3.2rem;
+      top: 22%;
+      left: 48%;
+    }
   }
 
   &__heading__span {
@@ -123,6 +165,16 @@
     text-align: center;
     color: rgb(71, 70, 70);
     padding-top: 2rem;
+
+    //Media query for <= 1200px
+    @include respond(tab-land) {
+      font-size: 2rem;
+    }
+
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      font-size: 2.6rem;
+    }
 
     &__list {
       list-style: none;

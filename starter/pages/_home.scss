@@ -5,13 +5,35 @@
   &__content {
     display: flex;
     justify-content: space-between;
-    margin: 0rem 4rem 3rem 45rem;
+    margin: 0rem 0rem 3rem 45rem;
+
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      margin: 0rem 4rem 10.5rem 15rem;
+      align-items: center;
+    }
+
+    //Media query for <= 600px
+    @include respond(phone) {
+      margin: 0rem 4rem 10.5rem 10rem;
+      align-items: center;
+    }
   }
 
   &__description {
     display: flex;
     flex-direction: column;
     flex: 0 0 45%;
+
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      flex: 0 0 55%;
+    }
+
+    //Media query for <= 600px
+    @include respond(phone) {
+      flex: 0 0 45%;
+    }
   }
 }
 
@@ -54,7 +76,7 @@
   padding: 20rem 10rem;
   background-color: #f7f7f7;
   margin-top: -10rem;
-  height: 115rem;
+  // height: 115rem;
   margin-bottom: 10rem;
 
   // position: relative;
