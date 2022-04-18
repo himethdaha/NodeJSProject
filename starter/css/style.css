@@ -807,6 +807,9 @@ Steps
 .footer {
   background-color: rgba(0, 0, 0, 0.836);
   padding: 10rem 0; }
+  @media (max-width: 37.5em) {
+    .footer {
+      padding: 6rem 2rem; } }
   .footer__logo-box {
     text-align: center; }
   .footer__img {
@@ -826,11 +829,18 @@ Steps
     @media (max-width: 75em) {
       .footer__info {
         justify-content: space-evenly; } }
+    @media (max-width: 37.5em) {
+      .footer__info {
+        flex-direction: column;
+        gap: 5rem; } }
   .footer__navigation {
     flex: 0 0 30%; }
     @media (max-width: 75em) {
       .footer__navigation {
         flex: 0 0 45%; } }
+    @media (max-width: 56.25em) {
+      .footer__navigation {
+        flex: 0 0 35%; } }
   .footer__list {
     display: flex;
     list-style: none;
@@ -841,6 +851,9 @@ Steps
     @media (max-width: 75em) {
       .footer__list {
         font-size: 1.8rem; } }
+    @media (max-width: 56.25em) {
+      .footer__list {
+        justify-content: space-around; } }
   .footer__item {
     cursor: pointer;
     transition: all 0.2s;
@@ -864,10 +877,16 @@ Steps
       .footer__paragraph {
         font-size: 2.2rem;
         flex: 0 0 35%; } }
+    @media (max-width: 37.5em) {
+      .footer__paragraph {
+        text-align: center; } }
   .footer__copyright {
     border-top: 1px solid #fff;
     display: inline-block;
     padding-top: 2rem; }
+    @media (max-width: 37.5em) {
+      .footer__copyright {
+        display: block; } }
 
 .navigation {
   /*
@@ -1056,6 +1075,16 @@ Steps
     transition: all 0.2s; }
     .tours__discover__btn:hover {
       animation: pulsate 1s infinite; }
+    @media (max-width: 56.25em) {
+      .tours__discover__btn {
+        margin-left: 40%;
+        font-size: 2.2rem; } }
+    @media (max-width: 37.5em) {
+      .tours__discover__btn {
+        margin-left: 32%;
+        font-size: 1.8rem;
+        margin-top: 8rem;
+        padding: 1.8rem 3rem; } }
 
 /*STORIES SECTION*/
 .stories {

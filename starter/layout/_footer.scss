@@ -2,6 +2,11 @@
   background-color: rgba(0, 0, 0, 0.836);
   padding: 10rem 0;
 
+  //Media query for <= 600px
+  @include respond(phone) {
+    padding: 6rem 2rem;
+  }
+
   &__logo-box {
     text-align: center;
   }
@@ -29,6 +34,12 @@
     @include respond(tab-land) {
       justify-content: space-evenly;
     }
+
+    //Media query for <= 900px
+    @include respond(phone) {
+      flex-direction: column;
+      gap: 5rem;
+    }
   }
 
   &__navigation {
@@ -37,6 +48,11 @@
     //Media query for <= 1200px
     @include respond(tab-land) {
       flex: 0 0 45%;
+    }
+
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      flex: 0 0 35%;
     }
   }
 
@@ -51,6 +67,11 @@
     //Media query for <= 1200px
     @include respond(tab-land) {
       font-size: 1.8rem;
+    }
+
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      justify-content: space-around;
     }
   }
 
@@ -87,11 +108,21 @@
       font-size: 2.2rem;
       flex: 0 0 35%;
     }
+
+    //Media query for <= 600px
+    @include respond(phone) {
+      text-align: center;
+    }
   }
 
   &__copyright {
     border-top: 1px solid #fff;
     display: inline-block;
     padding-top: 2rem;
+
+    //Media query for <= 600px
+    @include respond(phone) {
+      display: block;
+    }
   }
 }
