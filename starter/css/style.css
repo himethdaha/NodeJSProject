@@ -329,6 +329,16 @@ After pseudo element is trated like a child element, of the element we're choosi
   .features__box:hover {
     transform: scale(1.1) translateY(-1rem);
     box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.4); }
+  @media (max-width: 56.25em) {
+    .features__box {
+      padding: 1rem 2rem; }
+      .features__box:not(:last-child) {
+        margin-bottom: 3rem; } }
+  @media (max-width: 37.5em) {
+    .features__box {
+      padding: 0.75rem 1rem; }
+      .features__box:not(:last-child) {
+        margin-bottom: 2rem; } }
 
 .features__icon {
   font-size: 6rem;
@@ -337,6 +347,14 @@ After pseudo element is trated like a child element, of the element we're choosi
   background-clip: text;
   color: transparent;
   margin-bottom: 5rem; }
+  @media (max-width: 56.25em) {
+    .features__icon {
+      font-size: 4rem;
+      margin-bottom: 2rem; } }
+  @media (max-width: 37.5em) {
+    .features__icon {
+      font-size: 3rem;
+      margin-bottom: 1.6rem; } }
 
 .features__heading {
   text-transform: uppercase;
@@ -347,7 +365,11 @@ After pseudo element is trated like a child element, of the element we're choosi
   @media (max-width: 56.25em) {
     .features__heading {
       font-size: 1.6rem;
-      letter-spacing: 0.5px; } }
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem; } }
+  @media (max-width: 37.5em) {
+    .features__heading {
+      font-size: 1.4rem; } }
 
 .features__text {
   font-weight: 400;
@@ -998,9 +1020,20 @@ Steps
   padding: 22rem 10rem; }
   .features > * {
     transform: skewY(4deg); }
+  @media (max-width: 56.25em) {
+    .features {
+      padding: 12rem 5rem; } }
+  @media (max-width: 37.5em) {
+    .features {
+      padding: 8rem 4rem; } }
   .features__section {
     display: flex;
     justify-content: space-evenly; }
+    @media (max-width: 56.25em) {
+      .features__section {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center; } }
 
 .tours {
   padding: 20rem 10rem;

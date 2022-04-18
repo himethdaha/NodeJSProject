@@ -65,9 +65,27 @@
     transform: skewY(4deg);
   }
   padding: 22rem 10rem;
+
+  //Media query for <= 900px
+  @include respond(tab-port) {
+    padding: 12rem 5rem;
+  }
+
+  //Media query for <= 600px
+  @include respond(phone) {
+    padding: 8rem 4rem;
+  }
+
   &__section {
     display: flex;
     justify-content: space-evenly;
+
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 }
 
