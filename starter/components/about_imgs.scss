@@ -10,12 +10,9 @@
 
     //Media query for <= 900px
     @include respond(tab-port) {
-      width: 60%;
-    }
-
-    //Media query for <= 600px
-    @include respond(phone) {
-      width: 70%;
+      width: 164.55px;
+      height: 126.98px;
+      box-shadow: 0px 2rem 1rem rgba(0, 0, 0, 0.2);
     }
 
     &--img1 {
@@ -25,14 +22,10 @@
 
       //Media query for <= 900px
       @include respond(tab-port) {
-        top: -6rem;
-        left: 6%;
-      }
+        top: 3rem;
+        left: -103%;
 
-      //Media query for <= 600px
-      @include respond(phone) {
-        top: -18rem;
-        left: 6%;
+        transform: scale(1.1);
       }
     }
     &--img2 {
@@ -42,14 +35,10 @@
 
       //Media query for <= 900px
       @include respond(tab-port) {
-        top: -3rem;
-        left: 35%;
-      }
+        top: 3rem;
+        left: 97%;
 
-      //Media query for <= 600px
-      @include respond(phone) {
-        top: -15rem;
-        left: 30%;
+        transform: scale(1.1);
       }
     }
     &--img3 {
@@ -58,14 +47,10 @@
 
       //Media query for <= 900px
       @include respond(tab-port) {
-        top: 15%;
-        left: 20%;
-      }
+        top: 2rem;
+        left: -3%;
 
-      //Media query for <= 600px
-      @include respond(phone) {
-        top: -9rem;
-        left: 15%;
+        transform: scale(1.2);
       }
     }
 

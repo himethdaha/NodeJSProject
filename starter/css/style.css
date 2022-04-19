@@ -270,45 +270,35 @@ After pseudo element is trated like a child element, of the element we're choosi
     outline-offset: 1.2rem; }
     @media (max-width: 56.25em) {
       .about__images__img {
-        width: 60%; } }
-    @media (max-width: 37.5em) {
-      .about__images__img {
-        width: 70%; } }
+        width: 164.55px;
+        height: 126.98px;
+        box-shadow: 0px 2rem 1rem rgba(0, 0, 0, 0.2); } }
     .about__images__img--img1 {
       position: absolute;
       top: -1rem;
       left: 10%; }
       @media (max-width: 56.25em) {
         .about__images__img--img1 {
-          top: -6rem;
-          left: 6%; } }
-      @media (max-width: 37.5em) {
-        .about__images__img--img1 {
-          top: -18rem;
-          left: 6%; } }
+          top: 3rem;
+          left: -103%;
+          transform: scale(1.1); } }
     .about__images__img--img2 {
       position: absolute;
       top: 6%;
       left: 33%; }
       @media (max-width: 56.25em) {
         .about__images__img--img2 {
-          top: -3rem;
-          left: 35%; } }
-      @media (max-width: 37.5em) {
-        .about__images__img--img2 {
-          top: -15rem;
-          left: 30%; } }
+          top: 3rem;
+          left: 97%;
+          transform: scale(1.1); } }
     .about__images__img--img3 {
       top: 25%;
       left: 20%; }
       @media (max-width: 56.25em) {
         .about__images__img--img3 {
-          top: 15%;
-          left: 20%; } }
-      @media (max-width: 37.5em) {
-        .about__images__img--img3 {
-          top: -9rem;
-          left: 15%; } }
+          top: 2rem;
+          left: -3%;
+          transform: scale(1.2); } }
     .about__images__img:hover {
       z-index: 10;
       transform: scale(1.2) translateY(-0.5rem);
@@ -331,14 +321,14 @@ After pseudo element is trated like a child element, of the element we're choosi
     box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.4); }
   @media (max-width: 56.25em) {
     .features__box {
-      padding: 1rem 2rem; }
-      .features__box:not(:last-child) {
-        margin-bottom: 3rem; } }
+      padding: 1rem 2rem;
+      margin-bottom: 3rem; } }
   @media (max-width: 37.5em) {
     .features__box {
-      padding: 0.75rem 1rem; }
-      .features__box:not(:last-child) {
-        margin-bottom: 2rem; } }
+      padding: 0.75rem 1rem;
+      margin-bottom: 2rem; }
+      .features__box:last-child {
+        margin-bottom: 5rem; } }
 
 .features__icon {
   font-size: 6rem;
@@ -381,7 +371,8 @@ After pseudo element is trated like a child element, of the element we're choosi
   @media (max-width: 56.25em) {
     .tours__flexbox {
       flex-direction: column;
-      align-items: center; } }
+      align-items: center;
+      gap: 7rem; } }
   @media (max-width: 75em) {
     .tours__flexbox {
       justify-content: space-between; } }
@@ -395,11 +386,7 @@ After pseudo element is trated like a child element, of the element we're choosi
   position: relative; }
   @media (max-width: 75em) {
     .tours__card {
-      width: 37rem; } }
-  @media (max-width: 56.25em) {
-    .tours__card {
-      width: 100%;
-      margin-bottom: 5rem; } }
+      width: 35rem; } }
   .tours__card__side {
     transition: all 0.8s ease;
     overflow: hidden;
@@ -411,10 +398,7 @@ After pseudo element is trated like a child element, of the element we're choosi
     position: absolute; }
     @media (max-width: 75em) {
       .tours__card__side {
-        width: 37rem; } }
-    @media (max-width: 56.25em) {
-      .tours__card__side {
-        width: 100%; } }
+        width: 35rem; } }
     .tours__card__side--front {
       background-color: #fff; }
     .tours__card__side--back {
@@ -450,7 +434,7 @@ After pseudo element is trated like a child element, of the element we're choosi
     text-align: right; }
     @media (max-width: 75em) {
       .tours__card__heading {
-        font-size: 2.4rem; } }
+        font-size: 2.2rem; } }
     @media (max-width: 56.25em) {
       .tours__card__heading {
         font-size: 3.2rem;
@@ -499,11 +483,17 @@ After pseudo element is trated like a child element, of the element we're choosi
       font-size: 4rem;
       font-weight: 100;
       text-transform: uppercase; }
+      @media (max-width: 75em) {
+        .tours__card__cta__only {
+          font-size: 3rem; } }
     .tours__card__cta__price {
       color: #fff;
       font-size: 7rem;
       font-weight: 100;
       margin-bottom: 6rem; }
+      @media (max-width: 75em) {
+        .tours__card__cta__price {
+          font-size: 5rem; } }
     .tours__card__cta__btn {
       background-color: #fff;
       border-radius: 10rem;
@@ -514,10 +504,52 @@ After pseudo element is trated like a child element, of the element we're choosi
       text-transform: uppercase; }
       .tours__card__cta__btn::after {
         background-color: #fff; }
+      @media (max-width: 75em) {
+        .tours__card__cta__btn {
+          font-size: 2rem;
+          padding: 1.2rem 2.2rem; } }
   .tours__card:hover .tours__card__side--front {
     transform: rotateY(-180deg); }
   .tours__card:hover .tours__card__side--back {
     transform: rotateY(0deg); }
+  @media (max-width: 56.25em) {
+    .tours__card {
+      width: 45rem;
+      height: auto;
+      border-radius: 4px;
+      background-color: #fff;
+      box-shadow: 0rem 2.2rem 3rem rgba(0, 0, 0, 0.3); }
+      .tours__card__side {
+        overflow: hidden;
+        width: 45rem;
+        height: auto;
+        position: relative;
+        box-shadow: none; }
+        .tours__card__side--back {
+          transform: rotateY(0deg);
+          -webkit-clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%); }
+      .tours__card__heading {
+        font-size: 2.8rem;
+        top: 22%;
+        left: 48%; }
+      .tours__card__info {
+        font-size: 2.5rem; }
+      .tours__card__cta {
+        margin: 3rem;
+        padding-top: 3rem; }
+        .tours__card__cta__only {
+          font-size: 4rem; }
+        .tours__card__cta__price {
+          font-size: 6rem;
+          margin-bottom: 4rem; }
+        .tours__card__cta__btn {
+          padding: 1.2rem 3rem;
+          font-size: 2.2rem; }
+      .tours__card:hover .tours__card__side--front {
+        transform: rotateY(0deg); }
+      .tours__card:hover .tours__card__side--back {
+        transform: rotateY(0deg); } }
 
 .stories__container {
   padding: 5rem;
@@ -1007,7 +1039,8 @@ Steps
     @media (max-width: 56.25em) {
       .about__content {
         margin: 0rem 4rem 10.5rem 15rem;
-        align-items: center; } }
+        align-items: center;
+        flex-direction: column; } }
     @media (max-width: 37.5em) {
       .about__content {
         margin: 0rem 4rem 10.5rem 10rem;
@@ -1041,10 +1074,11 @@ Steps
     transform: skewY(4deg); }
   @media (max-width: 56.25em) {
     .features {
-      padding: 12rem 5rem; } }
+      padding: 10rem 2rem;
+      margin: -1rem 4rem 0 4rem; } }
   @media (max-width: 37.5em) {
     .features {
-      padding: 8rem 4rem; } }
+      padding: 8rem 2rem; } }
   .features__section {
     display: flex;
     justify-content: space-evenly; }
@@ -1058,7 +1092,15 @@ Steps
   padding: 20rem 10rem;
   background-color: #f7f7f7;
   margin-top: -10rem;
-  margin-bottom: 10rem; }
+  margin-bottom: 10rem;
+  position: relative; }
+  @media (max-width: 56.25em) {
+    .tours {
+      padding: 10rem 5rem;
+      margin-bottom: 5rem; } }
+  @media (max-width: 37.5em) {
+    .tours {
+      margin-bottom: 1rem; } }
   .tours__discover__btn {
     color: #fff;
     display: inline-block;
@@ -1070,21 +1112,22 @@ Steps
     font-weight: 100;
     text-decoration: none;
     cursor: pointer;
-    margin-left: 45%;
-    margin-top: 14rem;
-    transition: all 0.2s; }
+    margin-top: 10rem;
+    transition: all 0.2s;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
     .tours__discover__btn:hover {
       animation: pulsate 1s infinite; }
     @media (max-width: 56.25em) {
       .tours__discover__btn {
-        margin-left: 40%;
-        font-size: 2.2rem; } }
+        font-size: 2.2rem;
+        margin-top: 5rem; } }
     @media (max-width: 37.5em) {
       .tours__discover__btn {
-        margin-left: 32%;
         font-size: 1.8rem;
-        margin-top: 8rem;
-        padding: 1.8rem 3rem; } }
+        padding: 1.8rem 3rem;
+        margin-top: 4rem; } }
 
 /*STORIES SECTION*/
 .stories {

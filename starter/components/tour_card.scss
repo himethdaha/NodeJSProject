@@ -6,6 +6,7 @@
   @include respond(tab-port) {
     flex-direction: column;
     align-items: center;
+    gap: 7rem;
   }
 
   //Media query for <= 1200px
@@ -25,13 +26,7 @@
 
   //Media query for <= 1200px
   @include respond(tab-land) {
-    width: 37rem;
-  }
-
-  //Media query for <= 900px
-  @include respond(tab-port) {
-    width: 100%;
-    margin-bottom: 5rem;
+    width: 35rem;
   }
 
   &__side {
@@ -48,13 +43,9 @@
     position: absolute;
     //Media query for <= 1200px
     @include respond(tab-land) {
-      width: 37rem;
+      width: 35rem;
     }
 
-    //Media query for <= 900px
-    @include respond(tab-port) {
-      width: 100%;
-    }
     &--front {
       background-color: #fff;
     }
@@ -119,7 +110,7 @@
 
     //Media query for <= 1200px
     @include respond(tab-land) {
-      font-size: 2.4rem;
+      font-size: 2.2rem;
     }
 
     //Media query for <= 900px
@@ -205,6 +196,11 @@
       font-size: 4rem;
       font-weight: 100;
       text-transform: uppercase;
+
+      //Media query for <= 1200px
+      @include respond(tab-land) {
+        font-size: 3rem;
+      }
     }
 
     &__price {
@@ -212,6 +208,11 @@
       font-size: 7rem;
       font-weight: 100;
       margin-bottom: 6rem;
+
+      //Media query for <= 1200px
+      @include respond(tab-land) {
+        font-size: 5rem;
+      }
     }
 
     &__btn {
@@ -226,6 +227,12 @@
       &::after {
         background-color: $white-background;
       }
+
+      //Media query for <= 1200px
+      @include respond(tab-land) {
+        font-size: 2rem;
+        padding: 1.2rem 2.2rem;
+      }
     }
   }
 
@@ -238,5 +245,70 @@
   //Bring the back side of the card to the original position it would normally be in. Which is facing the user => 0 deg roataion
   &:hover &__side--back {
     transform: rotateY(0deg);
+  }
+
+  ///// MEDIA QUERY/////
+  //Media query for <= 900px
+  @include respond(tab-port) {
+    width: 45rem;
+    height: auto;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0rem 2.2rem 3rem rgba(0, 0, 0, 0.3);
+
+    &__side {
+      overflow: hidden;
+      width: 45rem;
+      height: auto;
+      position: relative;
+      box-shadow: none;
+
+      //Back of the card is already rotated 180 deg in other screen resolutions. So turn it back to the default value
+      &--back {
+        transform: rotateY(0deg);
+        -webkit-clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &__heading {
+      font-size: 2.8rem;
+      top: 22%;
+      left: 48%;
+    }
+
+    &__info {
+      font-size: 2.5rem;
+    }
+
+    &__cta {
+      margin: 3rem;
+      padding-top: 3rem;
+
+      &__only {
+        font-size: 4rem;
+      }
+
+      &__price {
+        font-size: 6rem;
+        margin-bottom: 4rem;
+      }
+
+      &__btn {
+        padding: 1.2rem 3rem;
+        font-size: 2.2rem;
+      }
+    }
+
+    //When hovering over the parent element target the child elements and perform the transform
+    //If i didnt choose the parent element and just added the hover to the child elements, they would transform only when i hover over them individually
+    &:hover &__side--front {
+      transform: rotateY(0deg);
+    }
+
+    //Bring the back side of the card to the original position it would normally be in. Which is facing the user => 0 deg roataion
+    &:hover &__side--back {
+      transform: rotateY(0deg);
+    }
   }
 }

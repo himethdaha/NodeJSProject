@@ -11,6 +11,7 @@
     @include respond(tab-port) {
       margin: 0rem 4rem 10.5rem 15rem;
       align-items: center;
+      flex-direction: column;
     }
 
     //Media query for <= 600px
@@ -68,12 +69,13 @@
 
   //Media query for <= 900px
   @include respond(tab-port) {
-    padding: 12rem 5rem;
+    padding: 10rem 2rem;
+    margin: -1rem 4rem 0 4rem;
   }
 
   //Media query for <= 600px
   @include respond(phone) {
-    padding: 8rem 4rem;
+    padding: 8rem 2rem;
   }
 
   &__section {
@@ -96,6 +98,18 @@
   margin-top: -10rem;
   // height: 115rem;
   margin-bottom: 10rem;
+  position: relative;
+
+  //Media query for <= 900px
+  @include respond(tab-port) {
+    padding: 10rem 5rem;
+    margin-bottom: 5rem;
+  }
+
+  //Media query for <= 600px
+  @include respond(phone) {
+    margin-bottom: 1rem;
+  }
 
   // position: relative;
 
@@ -110,9 +124,12 @@
     font-weight: 100;
     text-decoration: none;
     cursor: pointer;
-    margin-left: 45%;
-    margin-top: 14rem;
+    // margin-left: 45%;
+    margin-top: 10rem;
     transition: all 0.2s;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 
     &:hover {
       animation: pulsate 1s infinite;
@@ -120,16 +137,15 @@
 
     //Media query for <= 900px
     @include respond(tab-port) {
-      margin-left: 40%;
       font-size: 2.2rem;
+      margin-top: 5rem;
     }
 
     //Media query for <= 600px
     @include respond(phone) {
-      margin-left: 32%;
       font-size: 1.8rem;
-      margin-top: 8rem;
       padding: 1.8rem 3rem;
+      margin-top: 4rem;
     }
   }
 }
