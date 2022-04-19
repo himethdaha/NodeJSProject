@@ -168,6 +168,9 @@ body {
 /*BOOKING SECTION*/
 .booking__heading {
   margin: 1rem 4rem; }
+  @media (max-width: 37.5em) {
+    .booking__heading {
+      font-size: 3rem; } }
 
 .u-align-text-center {
   text-align: center; }
@@ -562,6 +565,17 @@ After pseudo element is trated like a child element, of the element we're choosi
   transform: skewX(-12deg); }
   .stories__container:not(:last-child) {
     margin-bottom: 6rem; }
+  @media (max-width: 56.25em) {
+    .stories__container {
+      width: 90%;
+      padding: 4rem;
+      padding-left: 5rem; } }
+  @media (max-width: 37.5em) {
+    .stories__container {
+      width: 95%;
+      padding: 2rem;
+      padding-left: 1rem;
+      transform: skewX(0); } }
 
 .stories__user {
   width: 15rem;
@@ -575,11 +589,17 @@ After pseudo element is trated like a child element, of the element we're choosi
   -webkit-clip-path: circle(50% at 50% 50%);
   clip-path: circle(50% at 50% 50%);
   transition: all 0.2s; }
+  @media (max-width: 37.5em) {
+    .stories__user {
+      transform: translateX(0) skewX(0); } }
   .stories__user__img {
     height: 100%;
     transform: translateX(-3rem) scale(1.1);
     transition: all 0.2s;
     backface-visibility: hidden; }
+    @media (max-width: 37.5em) {
+      .stories__user__img {
+        transform: translateX(0) scale(1.1); } }
   .stories__user__name {
     text-transform: uppercase;
     font-weight: 100;
@@ -601,6 +621,10 @@ After pseudo element is trated like a child element, of the element we're choosi
 .stories__description {
   transform: skewX(12deg);
   margin-left: 11rem; }
+  @media (max-width: 37.5em) {
+    .stories__description {
+      transform: skewX(0);
+      padding-left: 5rem; } }
 
 .stories__header {
   margin-bottom: 1rem;
@@ -652,6 +676,9 @@ After pseudo element is trated like a child element, of the element we're choosi
 .booking__form {
   padding: 6rem;
   width: 50%; }
+  @media (max-width: 37.5em) {
+    .booking__form {
+      width: 100%; } }
   .booking__form__group {
     position: relative; }
 
@@ -667,6 +694,10 @@ After pseudo element is trated like a child element, of the element we're choosi
   border-radius: 2px;
   border-bottom: 3px solid transparent;
   transition: all 0.3s; }
+  @media (max-width: 37.5em) {
+    .input {
+      width: 100%;
+      outline: 1px solid #b8b4b4; } }
   .input:focus {
     outline: none;
     border-bottom: 3px solid #37b24d;
@@ -759,6 +790,16 @@ Steps
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s; }
+  @media (max-width: 75em) {
+    .popup__header {
+      font-size: 3rem; } }
+  @media (max-width: 56.25em) {
+    .popup__header {
+      font-size: 2.8rem;
+      padding-top: 1.2rem; } }
+  @media (max-width: 37.5em) {
+    .popup__header {
+      font-size: 2rem; } }
   .popup__container {
     background-color: #fff;
     width: 70%;
@@ -770,6 +811,16 @@ Steps
     position: relative;
     transform: scale(0.25);
     transition: all 0.5s 0.2s; }
+    @media (max-width: 75em) {
+      .popup__container {
+        height: 55%; } }
+    @media (max-width: 56.25em) {
+      .popup__container {
+        height: 42%; } }
+    @media (max-width: 37.5em) {
+      .popup__container {
+        width: 95%;
+        height: 37%; } }
   .popup__close {
     position: absolute;
     top: -2%;
@@ -780,6 +831,11 @@ Steps
     transition: all 0.2s; }
     .popup__close:hover {
       color: #000; }
+    @media (max-width: 56.25em) {
+      .popup__close {
+        top: -5%;
+        right: 1%;
+        font-size: 4rem; } }
   .popup:target {
     opacity: 1;
     visibility: visible; }
@@ -807,10 +863,19 @@ Steps
     -ms-webkit-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto; }
+    @media (max-width: 56.25em) {
+      .popup__text {
+        padding: 1rem 2.4rem; } }
   .popup__description {
     font-size: 3rem; }
     .popup__description:not(:last-child) {
       margin-bottom: 2.2rem; }
+    @media (max-width: 75em) {
+      .popup__description {
+        font-size: 1.8rem; } }
+    @media (max-width: 37.5em) {
+      .popup__description {
+        font-size: 1.6rem; } }
   .popup__btn {
     text-transform: uppercase;
     background-color: #000;
@@ -820,6 +885,22 @@ Steps
     width: 20rem; }
     .popup__btn:hover {
       box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4); }
+    @media (max-width: 75em) {
+      .popup__btn {
+        padding: 1rem 1.8rem;
+        font-size: 1.6rem; } }
+    @media (max-width: 56.25em) {
+      .popup__btn {
+        width: 15rem;
+        margin-bottom: 2rem; } }
+    @media (max-width: 37.5em) {
+      .popup__btn {
+        font-size: 1rem;
+        width: 10rem;
+        position: absolute;
+        top: 89%;
+        left: 50%;
+        transform: translateX(-50%); } }
 
 .header {
   height: 95vh;
@@ -1051,10 +1132,12 @@ Steps
     flex: 0 0 45%; }
     @media (max-width: 56.25em) {
       .about__description {
-        flex: 0 0 55%; } }
+        flex: 0 0 55%;
+        margin-bottom: 3rem; } }
     @media (max-width: 37.5em) {
       .about__description {
-        flex: 0 0 45%; } }
+        flex: 0 0 45%;
+        margin-bottom: 3rem; } }
 
 /*Features section*/
 .features {
@@ -1097,7 +1180,7 @@ Steps
   @media (max-width: 56.25em) {
     .tours {
       padding: 10rem 5rem;
-      margin-bottom: 5rem; } }
+      margin-bottom: 15rem; } }
   @media (max-width: 37.5em) {
     .tours {
       margin-bottom: 1rem; } }
@@ -1149,6 +1232,11 @@ Steps
     max-width: 150rem;
     margin: 0 auto;
     box-shadow: 0rem 3rem 4rem rgba(0, 0, 0, 0.3); }
+    @media (max-width: 37.5em) {
+      .tour__booking__container {
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%);
+        max-width: 90rem;
+        box-shadow: 0rem 3rem 4rem rgba(0, 0, 0, 0.4); } }
 
 .row {
   max-width: 114rem;

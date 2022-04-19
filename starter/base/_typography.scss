@@ -117,4 +117,9 @@ body {
 /*BOOKING SECTION*/
 .booking__heading {
   margin: 1rem 4rem;
+
+  //Media query for <= 600px
+  @include respond(phone) {
+    font-size: 3rem;
+  }
 }

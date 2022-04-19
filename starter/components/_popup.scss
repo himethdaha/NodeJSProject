@@ -10,6 +10,24 @@
   visibility: hidden;
   transition: all 0.3s;
 
+  &__header {
+    //Media query for <= 1200px
+    @include respond(tab-land) {
+      font-size: 3rem;
+    }
+
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      font-size: 2.8rem;
+      padding-top: 1.2rem;
+    }
+
+    //Media query for <= 600px
+    @include respond(phone) {
+      font-size: 2rem;
+    }
+  }
+
   &__container {
     background-color: #fff;
     width: 70%;
@@ -21,6 +39,22 @@
     position: relative;
     transform: scale(0.25);
     transition: all 0.5s 0.2s;
+
+    //Media query for <= 1200px
+    @include respond(tab-land) {
+      height: 55%;
+    }
+
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      height: 42%;
+    }
+
+    //Media query for <= 600px
+    @include respond(phone) {
+      width: 95%;
+      height: 37%;
+    }
   }
 
   //Close state
@@ -35,6 +69,13 @@
 
     &:hover {
       color: #000;
+    }
+
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      top: -5%;
+      right: 1%;
+      font-size: 4rem;
     }
   }
 
@@ -77,6 +118,11 @@
     -ms-webkit-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto;
+
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      padding: 1rem 2.4rem;
+    }
   }
 
   &__description {
@@ -84,6 +130,16 @@
 
     &:not(:last-child) {
       margin-bottom: 2.2rem;
+    }
+
+    //Media query for <= 1200px
+    @include respond(tab-land) {
+      font-size: 1.8rem;
+    }
+
+    //Media query for <= 600px
+    @include respond(phone) {
+      font-size: 1.6rem;
     }
   }
 
@@ -97,6 +153,29 @@
 
     &:hover {
       box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
+    }
+
+    //Media query for <= 1200px
+    @include respond(tab-land) {
+      padding: 1rem 1.8rem;
+      font-size: 1.6rem;
+    }
+
+    //Media query for <= 900px
+    @include respond(tab-port) {
+      width: 15rem;
+      margin-bottom: 2rem;
+    }
+
+    //Media query for <= 600px
+    @include respond(phone) {
+      font-size: 1rem;
+      width: 10rem;
+      position: absolute;
+
+      top: 89%;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 }

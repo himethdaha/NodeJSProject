@@ -29,11 +29,13 @@
     //Media query for <= 900px
     @include respond(tab-port) {
       flex: 0 0 55%;
+      margin-bottom: 3rem;
     }
 
     //Media query for <= 600px
     @include respond(phone) {
       flex: 0 0 45%;
+      margin-bottom: 3rem;
     }
   }
 }
@@ -103,7 +105,7 @@
   //Media query for <= 900px
   @include respond(tab-port) {
     padding: 10rem 5rem;
-    margin-bottom: 5rem;
+    margin-bottom: 15rem;
   }
 
   //Media query for <= 600px
@@ -178,5 +180,16 @@
     max-width: 150rem;
     margin: 0 auto;
     box-shadow: 0rem 3rem 4rem rgba(0, 0, 0, 0.3);
+
+    //Media query for <= 600px
+    @include respond(phone) {
+      background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.9) 50%
+      );
+      max-width: 90rem;
+      box-shadow: 0rem 3rem 4rem rgba(0, 0, 0, 0.4);
+    }
   }
 }
