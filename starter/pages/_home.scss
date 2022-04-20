@@ -42,7 +42,7 @@
 
 /*Features section*/
 .features {
-  margin: -8rem 4rem 0 4rem;
+  margin: -3rem 4rem 0 4rem;
   background-image: linear-gradient(
       to right bottom,
       rgba(61, 61, 61, 0.596),
@@ -67,7 +67,7 @@
   & > * {
     transform: skewY(4deg);
   }
-  padding: 22rem 10rem;
+  padding: 20rem 10rem;
 
   //Media query for <= 900px
   @include respond(tab-port) {

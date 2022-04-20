@@ -397,6 +397,7 @@ After pseudo element is trated like a child element, of the element we're choosi
     height: 56rem;
     border-radius: 4px;
     box-shadow: 0rem 2rem 3rem rgba(0, 0, 0, 0.3);
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     position: absolute; }
     @media (max-width: 75em) {
@@ -583,11 +584,9 @@ After pseudo element is trated like a child element, of the element we're choosi
   transform: translateX(-3rem) skewX(12.01deg);
   position: relative;
   overflow: hidden;
+  backface-visibility: hidden;
   float: left;
-  -webkit-shape-outside: circle(50% at 50% 50%);
-  shape-outside: circle(50% at 50% 50%);
-  -webkit-clip-path: circle(50% at 50% 50%);
-  clip-path: circle(50% at 50% 50%);
+  border-radius: 10rem;
   transition: all 0.2s; }
   @media (max-width: 37.5em) {
     .stories__user {
@@ -595,8 +594,7 @@ After pseudo element is trated like a child element, of the element we're choosi
   .stories__user__img {
     height: 100%;
     transform: translateX(-3rem) scale(1.1);
-    transition: all 0.2s;
-    backface-visibility: hidden; }
+    transition: all 0.2s; }
     @media (max-width: 37.5em) {
       .stories__user__img {
         transform: translateX(0) scale(1.1); } }
@@ -785,11 +783,13 @@ Steps
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
   z-index: 10;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s; }
+  transition: all 0.3s;
+  -webkit-backdrop-filter: blur(1rem);
+  backdrop-filter: blur(1rem);
+  background-color: rgba(0, 0, 0, 0.6); }
   @media (max-width: 75em) {
     .popup__header {
       font-size: 3rem; } }
@@ -1141,7 +1141,7 @@ Steps
 
 /*Features section*/
 .features {
-  margin: -8rem 4rem 0 4rem;
+  margin: -3rem 4rem 0 4rem;
   background-image: linear-gradient(to right bottom, rgba(61, 61, 61, 0.596), rgba(34, 33, 33, 0.774)), url(../img/features.jpg);
   background-size: cover;
   background-position: center center;
@@ -1152,7 +1152,7 @@ Steps
   p4 - bottom left X
   */
   transform: skewY(-4deg);
-  padding: 22rem 10rem; }
+  padding: 20rem 10rem; }
   .features > * {
     transform: skewY(4deg); }
   @media (max-width: 56.25em) {
