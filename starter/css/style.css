@@ -67,19 +67,23 @@ html {
   /*The main purpose of setting the root element font size is to use 10px as the default font size.*/
   /*To get 1rem to be equal to 10px, divide 10 by 16*/
   font-size: 62.5%; }
-  @media (max-width: 75em) {
+  @media only screen and (max-width: 75em) {
     html {
       font-size: 56.25%; } }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     html {
       font-size: 50%; } }
-  @media (min-width: 112.5em) {
+  @media only screen and (min-width: 112.5em) {
     html {
       font-size: 75%; } }
 
 body {
   /*Box-size is inherited by the universal selector*/
   box-sizing: border-box; }
+
+::selection {
+  background-color: #000;
+  color: #fff; }
 
 body {
   font-family: 'Oswald', sans-serif;
@@ -97,11 +101,11 @@ body {
     animation-name: moveInFromLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .main-heading__text-level-one {
         font-size: 13rem;
         line-height: 1.4; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .main-heading__text-level-one {
         font-size: 10rem;
         line-height: 1.3; } }
@@ -113,10 +117,10 @@ body {
     animation-duration: 1s;
     animation-timing-function: ease-out;
     margin-bottom: 5rem; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .main-heading__text-level-two {
         font-size: 4rem; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .main-heading__text-level-two {
         font-size: 3rem;
         line-height: 1.2; } }
@@ -132,10 +136,10 @@ body {
   background-clip: text;
   color: transparent;
   transition: all 0.2s; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .secondary__heading {
       font-size: 3.8rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .secondary__heading {
       font-size: 3.2rem; } }
   .secondary__heading:hover {
@@ -147,11 +151,11 @@ body {
   font-size: 2.2rem;
   margin-bottom: 3.2rem;
   opacity: 0.9; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .header__tertiary {
       font-size: 2rem;
       margin-bottom: 2.8rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .header__tertiary {
       font-size: 1.8rem; } }
 
@@ -168,7 +172,7 @@ body {
 /*BOOKING SECTION*/
 .booking__heading {
   margin: 1rem 4rem; }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .booking__heading {
       font-size: 3rem; } }
 
@@ -271,7 +275,7 @@ After pseudo element is trated like a child element, of the element we're choosi
     position: relative;
     transition: all 0.3s;
     outline-offset: 1.2rem; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .about__images__img {
         width: 164.55px;
         height: 126.98px;
@@ -280,7 +284,7 @@ After pseudo element is trated like a child element, of the element we're choosi
       position: absolute;
       top: -1rem;
       left: 10%; }
-      @media (max-width: 56.25em) {
+      @media only screen and (max-width: 56.25em) {
         .about__images__img--img1 {
           top: 3rem;
           left: -103%;
@@ -289,7 +293,7 @@ After pseudo element is trated like a child element, of the element we're choosi
       position: absolute;
       top: 6%;
       left: 33%; }
-      @media (max-width: 56.25em) {
+      @media only screen and (max-width: 56.25em) {
         .about__images__img--img2 {
           top: 3rem;
           left: 97%;
@@ -297,7 +301,7 @@ After pseudo element is trated like a child element, of the element we're choosi
     .about__images__img--img3 {
       top: 25%;
       left: 20%; }
-      @media (max-width: 56.25em) {
+      @media only screen and (max-width: 56.25em) {
         .about__images__img--img3 {
           top: 2rem;
           left: -3%;
@@ -322,11 +326,11 @@ After pseudo element is trated like a child element, of the element we're choosi
   .features__box:hover {
     transform: scale(1.1) translateY(-1rem);
     box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.4); }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .features__box {
       padding: 1rem 2rem;
       margin-bottom: 3rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .features__box {
       padding: 0.75rem 1rem;
       margin-bottom: 2rem; }
@@ -340,11 +344,11 @@ After pseudo element is trated like a child element, of the element we're choosi
   background-clip: text;
   color: transparent;
   margin-bottom: 5rem; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .features__icon {
       font-size: 4rem;
       margin-bottom: 2rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .features__icon {
       font-size: 3rem;
       margin-bottom: 1.6rem; } }
@@ -355,12 +359,12 @@ After pseudo element is trated like a child element, of the element we're choosi
   font-size: 2rem;
   letter-spacing: 0.75px;
   margin-bottom: 1.2rem; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .features__heading {
       font-size: 1.6rem;
       letter-spacing: 0.5px;
       margin-bottom: 1rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .features__heading {
       font-size: 1.4rem; } }
 
@@ -371,12 +375,12 @@ After pseudo element is trated like a child element, of the element we're choosi
 .tours__flexbox {
   display: flex;
   justify-content: space-around; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .tours__flexbox {
       flex-direction: column;
       align-items: center;
       gap: 7rem; } }
-  @media (max-width: 75em) {
+  @media only screen and (max-width: 75em) {
     .tours__flexbox {
       justify-content: space-between; } }
 
@@ -387,7 +391,7 @@ After pseudo element is trated like a child element, of the element we're choosi
   height: 56rem;
   border-radius: 4px;
   position: relative; }
-  @media (max-width: 75em) {
+  @media only screen and (max-width: 75em) {
     .tours__card {
       width: 35rem; } }
   .tours__card__side {
@@ -400,7 +404,7 @@ After pseudo element is trated like a child element, of the element we're choosi
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     position: absolute; }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .tours__card__side {
         width: 35rem; } }
     .tours__card__side--front {
@@ -436,10 +440,10 @@ After pseudo element is trated like a child element, of the element we're choosi
     left: 46%;
     width: 50%;
     text-align: right; }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .tours__card__heading {
         font-size: 2.2rem; } }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .tours__card__heading {
         font-size: 3.2rem;
         top: 22%;
@@ -459,10 +463,10 @@ After pseudo element is trated like a child element, of the element we're choosi
     text-align: center;
     color: #474646;
     padding-top: 2rem; }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .tours__card__info {
         font-size: 2rem; } }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .tours__card__info {
         font-size: 2.6rem; } }
     .tours__card__info__list {
@@ -487,7 +491,7 @@ After pseudo element is trated like a child element, of the element we're choosi
       font-size: 4rem;
       font-weight: 100;
       text-transform: uppercase; }
-      @media (max-width: 75em) {
+      @media only screen and (max-width: 75em) {
         .tours__card__cta__only {
           font-size: 3rem; } }
     .tours__card__cta__price {
@@ -495,7 +499,7 @@ After pseudo element is trated like a child element, of the element we're choosi
       font-size: 7rem;
       font-weight: 100;
       margin-bottom: 6rem; }
-      @media (max-width: 75em) {
+      @media only screen and (max-width: 75em) {
         .tours__card__cta__price {
           font-size: 5rem; } }
     .tours__card__cta__btn {
@@ -508,7 +512,7 @@ After pseudo element is trated like a child element, of the element we're choosi
       text-transform: uppercase; }
       .tours__card__cta__btn::after {
         background-color: #fff; }
-      @media (max-width: 75em) {
+      @media only screen and (max-width: 75em) {
         .tours__card__cta__btn {
           font-size: 2rem;
           padding: 1.2rem 2.2rem; } }
@@ -516,7 +520,7 @@ After pseudo element is trated like a child element, of the element we're choosi
     transform: rotateY(-180deg); }
   .tours__card:hover .tours__card__side--back {
     transform: rotateY(0deg); }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     .tours__card {
       width: 45rem;
       height: auto;
@@ -566,12 +570,12 @@ After pseudo element is trated like a child element, of the element we're choosi
   transform: skewX(-12deg); }
   .stories__container:not(:last-child) {
     margin-bottom: 6rem; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .stories__container {
       width: 90%;
       padding: 4rem;
       padding-left: 5rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .stories__container {
       width: 95%;
       padding: 2rem;
@@ -588,14 +592,14 @@ After pseudo element is trated like a child element, of the element we're choosi
   float: left;
   border-radius: 10rem;
   transition: all 0.2s; }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .stories__user {
       transform: translateX(0) skewX(0); } }
   .stories__user__img {
     height: 100%;
     transform: translateX(-3rem) scale(1.1);
     transition: all 0.2s; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .stories__user__img {
         transform: translateX(0) scale(1.1); } }
   .stories__user__name {
@@ -619,7 +623,7 @@ After pseudo element is trated like a child element, of the element we're choosi
 .stories__description {
   transform: skewX(12deg);
   margin-left: 11rem; }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .stories__description {
       transform: skewX(0);
       padding-left: 5rem; } }
@@ -674,7 +678,7 @@ After pseudo element is trated like a child element, of the element we're choosi
 .booking__form {
   padding: 6rem;
   width: 50%; }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .booking__form {
       width: 100%; } }
   .booking__form__group {
@@ -692,7 +696,7 @@ After pseudo element is trated like a child element, of the element we're choosi
   border-radius: 2px;
   border-bottom: 3px solid transparent;
   transition: all 0.3s; }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .input {
       width: 100%;
       outline: 1px solid #b8b4b4; } }
@@ -790,14 +794,14 @@ Steps
   -webkit-backdrop-filter: blur(1rem);
   backdrop-filter: blur(1rem);
   background-color: rgba(0, 0, 0, 0.6); }
-  @media (max-width: 75em) {
+  @media only screen and (max-width: 75em) {
     .popup__header {
       font-size: 3rem; } }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .popup__header {
       font-size: 2.8rem;
       padding-top: 1.2rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .popup__header {
       font-size: 2rem; } }
   .popup__container {
@@ -811,13 +815,13 @@ Steps
     position: relative;
     transform: scale(0.25);
     transition: all 0.5s 0.2s; }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .popup__container {
         height: 55%; } }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .popup__container {
         height: 42%; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .popup__container {
         width: 95%;
         height: 37%; } }
@@ -831,7 +835,7 @@ Steps
     transition: all 0.2s; }
     .popup__close:hover {
       color: #000; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .popup__close {
         top: -5%;
         right: 1%;
@@ -863,17 +867,17 @@ Steps
     -ms-webkit-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .popup__text {
         padding: 1rem 2.4rem; } }
   .popup__description {
     font-size: 3rem; }
     .popup__description:not(:last-child) {
       margin-bottom: 2.2rem; }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .popup__description {
         font-size: 1.8rem; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .popup__description {
         font-size: 1.6rem; } }
   .popup__btn {
@@ -885,15 +889,15 @@ Steps
     width: 20rem; }
     .popup__btn:hover {
       box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4); }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .popup__btn {
         padding: 1rem 1.8rem;
         font-size: 1.6rem; } }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .popup__btn {
         width: 15rem;
         margin-bottom: 2rem; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .popup__btn {
         font-size: 1rem;
         width: 10rem;
@@ -920,7 +924,7 @@ Steps
 .footer {
   background-color: rgba(0, 0, 0, 0.836);
   padding: 10rem 0; }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .footer {
       padding: 6rem 2rem; } }
   .footer__logo-box {
@@ -939,19 +943,19 @@ Steps
     display: flex;
     justify-content: space-around;
     align-content: center; }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .footer__info {
         justify-content: space-evenly; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .footer__info {
         flex-direction: column;
         gap: 5rem; } }
   .footer__navigation {
     flex: 0 0 30%; }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .footer__navigation {
         flex: 0 0 45%; } }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .footer__navigation {
         flex: 0 0 35%; } }
   .footer__list {
@@ -961,10 +965,10 @@ Steps
     justify-content: space-between;
     border-top: 1px solid #fff;
     padding-top: 2rem; }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .footer__list {
         font-size: 1.8rem; } }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .footer__list {
         justify-content: space-around; } }
   .footer__item {
@@ -986,18 +990,18 @@ Steps
     font-size: 2.6rem;
     font-weight: 100;
     flex: 0 0 30%; }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .footer__paragraph {
         font-size: 2.2rem;
         flex: 0 0 35%; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .footer__paragraph {
         text-align: center; } }
   .footer__copyright {
     border-top: 1px solid #fff;
     display: inline-block;
     padding-top: 2rem; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .footer__copyright {
         display: block; } }
 
@@ -1117,12 +1121,12 @@ Steps
     display: flex;
     justify-content: space-between;
     margin: 0rem 0rem 3rem 45rem; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .about__content {
         margin: 0rem 4rem 10.5rem 15rem;
         align-items: center;
         flex-direction: column; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .about__content {
         margin: 0rem 4rem 10.5rem 10rem;
         align-items: center; } }
@@ -1130,11 +1134,11 @@ Steps
     display: flex;
     flex-direction: column;
     flex: 0 0 45%; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .about__description {
         flex: 0 0 55%;
         margin-bottom: 3rem; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .about__description {
         flex: 0 0 45%;
         margin-bottom: 3rem; } }
@@ -1155,17 +1159,17 @@ Steps
   padding: 20rem 10rem; }
   .features > * {
     transform: skewY(4deg); }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .features {
       padding: 10rem 2rem;
       margin: -1rem 4rem 0 4rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .features {
       padding: 8rem 2rem; } }
   .features__section {
     display: flex;
     justify-content: space-evenly; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .features__section {
         flex-direction: column;
         justify-content: space-between;
@@ -1177,11 +1181,11 @@ Steps
   margin-top: -10rem;
   margin-bottom: 10rem;
   position: relative; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .tours {
       padding: 10rem 5rem;
       margin-bottom: 15rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .tours {
       margin-bottom: 1rem; } }
   .tours__discover__btn {
@@ -1202,11 +1206,11 @@ Steps
     transform: translateX(-50%); }
     .tours__discover__btn:hover {
       animation: pulsate 1s infinite; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .tours__discover__btn {
         font-size: 2.2rem;
         margin-top: 5rem; } }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .tours__discover__btn {
         font-size: 1.8rem;
         padding: 1.8rem 3rem;
@@ -1232,7 +1236,7 @@ Steps
     max-width: 150rem;
     margin: 0 auto;
     box-shadow: 0rem 3rem 4rem rgba(0, 0, 0, 0.3); }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .tour__booking__container {
         background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%);
         max-width: 90rem;

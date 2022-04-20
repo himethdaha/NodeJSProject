@@ -250,7 +250,9 @@
 
   ///// MEDIA QUERY/////
   //Media query for <= 900px
-  @include respond(tab-port) {
+  // @include respond(tab-port) {
+  //For touch devices too
+  @media only screen and(max-width: 56.25em), only screen and(hover:none) {
     width: 45rem;
     height: auto;
     border-radius: 4px;

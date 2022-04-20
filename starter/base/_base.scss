@@ -47,3 +47,8 @@ body {
   /*Box-size is inherited by the universal selector*/
   box-sizing: border-box;
 }
+
+::selection {
+  background-color: #000;
+  color: #fff;
+}
