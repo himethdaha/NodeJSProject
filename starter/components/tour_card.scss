@@ -253,7 +253,7 @@
   // @include respond(tab-port) {
   //For touch devices too
   @media only screen and(max-width: 56.25em), only screen and(hover:none) {
-    width: 45rem;
+    width: 60rem;
     height: auto;
     border-radius: 4px;
     background-color: #fff;
@@ -261,7 +261,7 @@
 
     &__side {
       overflow: hidden;
-      width: 45rem;
+      width: 60rem;
       height: auto;
       position: relative;
       box-shadow: none;
@@ -312,6 +312,44 @@
     //Bring the back side of the card to the original position it would normally be in. Which is facing the user => 0 deg roataion
     &:hover &__side--back {
       transform: rotateY(0deg);
+    }
+  }
+
+  @media only screen and(max-width: 37.5em) {
+    width: 45rem;
+    &__side {
+      overflow: hidden;
+      width: 45rem;
+    }
+  }
+  //At 400px the form breaks
+  @media only screen and (max-width: 25em) {
+    width: 35rem;
+    &__side {
+      width: 35rem;
+    }
+
+    &__heading {
+      font-size: 2rem;
+    }
+  }
+  @media only screen and(max-width: 37.5em) {
+    width: 45rem;
+    &__side {
+      overflow: hidden;
+      width: 45rem;
+    }
+  }
+
+  //At 400px the form breaks
+  @media only screen and (max-width: 25em) {
+    width: 35rem;
+    &__side {
+      width: 35rem;
+    }
+
+    &__heading {
+      font-size: 2rem;
     }
   }
 }

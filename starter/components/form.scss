@@ -82,6 +82,11 @@
   font-weight: 100;
   margin: 1rem 0;
 
+  //At 400px the form breaks
+  @media only screen and (max-width: 25em) {
+    width: 100%;
+  }
+
   &__radio-btn {
     display: none;
   }

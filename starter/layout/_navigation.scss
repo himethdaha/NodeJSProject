@@ -14,6 +14,11 @@
 
     right: 1%;
     top: 4%;
+
+    @include respond(phone) {
+      right: 5%;
+      top: 4%;
+    }
   }
   &__background {
     height: 6rem;
@@ -26,6 +31,11 @@
 
     right: 1%;
     top: 4.5%;
+
+    @include respond(phone) {
+      right: 5%;
+      top: 4.5%;
+    }
   }
   &__navbar {
     position: fixed;
