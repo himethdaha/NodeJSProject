@@ -1,0 +1,73 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='preconnect' href='https://fonts.googleapis.com')
+  link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+  link(href='https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap' rel='stylesheet')
+  link(rel='stylesheet' href='css/basic/icon-fonts.css')
+  link(rel='stylesheet' href='css/ecom/ecom-fonts.css')
+  link(rel='stylesheet' href='css/style.css' type='text/css')
+  link(rel='shortcut icon' type='image/png' href='img/favo.png')
+  title Boundless | For the Daring
+
+
+body
+// NAVIGATION
+.navigation
+  // Checkbox
+  input#navigation.navigation__checkbox(type='checkbox')
+  // Label
+  label.navigation__label(for='navigation')
+    // Span element for the nav icon
+    span.navigation__icon
+  // Background
+  .navigation__background
+  // Navigation Items
+  nav.navigation__navbar
+    ul.navigation__list
+      li.navigation__item
+        a.navigation__link(href='#') example nav
+      li.navigation__item
+        a.navigation__link(href='#') example nav
+      li.navigation__item
+        a.navigation__link(href='#') example nav
+      li.navigation__item
+        a.navigation__link(href='#') example nav
+      li.navigation__item
+        a.navigation__link(href='#') example nav
+// HEADER
+header.header
+  .header__heading-box
+    h1.main-heading
+      span.main-heading__text-level-one into the unknown
+      span.main-heading__text-level-two the unexplored, for the daring
+    a.btn.btn--discover(href='#') Discover More Expreriences
+// FOOTER
+footer.footer
+  // Logo section
+  .footer__logo-box
+    // <img src="img/footer.png" alt="Boundless Logo" class="footer__img" />
+    .u-align-text-center.u-marg-bottom-8
+      h2.footer__heading boundless
+  .footer__info
+    .footer__navigation
+      ul.footer__list
+        li.footer__item
+          a.footer__link(href='') company
+        li.footer__item
+          a.footer__link(href='') contact
+        li.footer__item
+          a.footer__link(href='') careers
+        li.footer__item
+          a.footer__link(href='') privacy policy
+        li.footer__item
+          a.footer__link(href='') terms &amp; agreements
+    .footer__paragraph
+      p.footer__copyright
+        | &copy; 
+        span.year
+        |  Boundless. All Rights Reserved
+
+
+script(src='js/script.js')

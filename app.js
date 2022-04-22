@@ -1,4 +1,5 @@
 //Importing the Express module
+const path = require('path');
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -16,6 +17,13 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 
+//Conencting views
+app.set('view engine', 'pug');
+//Pug temps are called views in express
+app.set('views', path.join(__dirname, 'views'));
+
+//TO serve static files
+app.use(express.static(path.join(__dirname, 'public')));
 //Middleware
 //Set secure headers
 app.use(helmet());
@@ -48,6 +56,10 @@ app.use(
   hpp({ whitelist: ['duration', 'dangers', 'horrorLevel', 'difficulty'] })
 );
 
+//Render the views
+app.get('/', (req, res) => {
+  res.status(200).render('base');
+});
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);

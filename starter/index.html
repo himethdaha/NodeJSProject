@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/ecom/ecom-fonts.css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="shortcut icon" type="image/png" href="img/favo.png" />
+    <script src="js/script.js"></script>
 
     <title>Boundless | For the Daring</title>
   </head>
@@ -23,12 +24,30 @@
       <div class="popup__container">
         <a href="#tours" class="popup__close">&times;</a>
         <div class="popup__imgs">
-          <img src="img/popup1.jpg" alt="Picture of a fox" class="popup__img" />
-          <img
-            src="img/popup2.jpg"
-            alt="Picture of a wolf"
-            class="popup__img"
-          />
+          <picture class="popup__picture">
+            <source
+              srcset="img/popup-sml.jpg"
+              media="(max-width: 25em)"
+              class="popup__pic"
+            />
+            <img
+              src="img/popup1.jpg"
+              alt="Picture of a fox"
+              class="popup__img"
+            />
+          </picture>
+          <picture class="popup__picture">
+            <source
+              srcset="img/popup-sml-2.jpg"
+              media="(max-width: 25em)"
+              class="popup__pic"
+            />
+            <img
+              src="img/popup2.jpg"
+              alt="Picture of a wolf"
+              class="popup__img"
+            />
+          </picture>
         </div>
         <div class="popup__text">
           <div class="u-align-text-center">
